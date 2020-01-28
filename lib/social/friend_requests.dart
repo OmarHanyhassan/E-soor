@@ -30,7 +30,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 								mainAxisAlignment: MainAxisAlignment.start,
 								children: <Widget>[
 									Text("Acc Name"),
-									SizedBox(width: 130,),
+									SizedBox(width: 70,),
 									Text(
 										"Verification",
 										style: TextStyle(

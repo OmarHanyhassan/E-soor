@@ -7,6 +7,7 @@ class Network extends StatefulWidget {
 }
 
 class _NetworkState extends State<Network> {
+	int members = 20;
 	@override
 	Widget build(BuildContext context) {
 		return Scaffold(
@@ -18,7 +19,27 @@ class _NetworkState extends State<Network> {
 					mainAxisSpacing: 5,
 				),
 				itemBuilder: (context, position) {
-					return Card();
+					return Card(
+						child: Column(
+							children: <Widget>[
+								Padding(
+									padding: EdgeInsets.only(top: 10),
+									child: CircleAvatar(
+										minRadius: 40,
+									),
+								),
+								Text(
+									"Name",
+									style: TextStyle(
+										fontSize: 25,
+									),
+								),
+								Text(
+									"$members"+" "+"members"
+								)
+							],
+						),
+					);
 				},
 				itemCount: 18,
 			),

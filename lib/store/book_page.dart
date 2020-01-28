@@ -1,29 +1,14 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:E_Soor/main.dart';
+
 class BookPage extends StatefulWidget {
 	@override
 	_BookState createState() => _BookState();
 }
 
-class _BookState extends State<BookPage> with SingleTickerProviderStateMixin {
+class _BookState extends State<BookPage> {
 	int price = 60;
-	AnimationController _controller;
-
-	@override
-	void initState() {
-		_controller = AnimationController(vsync: this);
-		super.initState();
-	}
-
-	@override
-	void dispose() {
-		_controller.dispose();
-		super.dispose();
-	}
-
 
 	@override
 	Widget build(BuildContext context) {
@@ -31,10 +16,7 @@ class _BookState extends State<BookPage> with SingleTickerProviderStateMixin {
 		return Scaffold(
 			appBar: AppBar(
 				leading: IconButton(
-					icon: AnimatedIcon(
-						icon: AnimatedIcons.arrow_menu,
-						progress: _controller,
-					),
+					icon: Icon(Icons.arrow_back),
 					onPressed: () {
 						Navigator.pop(context);
 					},
@@ -50,9 +32,18 @@ class _BookState extends State<BookPage> with SingleTickerProviderStateMixin {
 							showSearch(context: context, delegate: AppSearch());
 						},
 					),
-					IconButton(
+					PopupMenuButton(
 						icon: Icon(Icons.more_vert),
-						onPressed: () {},
+						itemBuilder: (context) => [
+							PopupMenuItem(
+								value: 0,
+								child: Chip(
+									backgroundColor: Colors.blueGrey,
+									label: Text("Report"),
+									avatar: Icon(Icons.flag),
+								),
+							),
+						],
 					),
 				],
 			),
@@ -82,7 +73,7 @@ class _BookState extends State<BookPage> with SingleTickerProviderStateMixin {
 											),
 										),
 										RatingBar(
-											initialRating: 0,
+											initialRating: 3.5,
 											itemSize: 30,
 											allowHalfRating: true,
 											glowColor: Colors.green,
@@ -103,9 +94,11 @@ class _BookState extends State<BookPage> with SingleTickerProviderStateMixin {
 										),
 									],
 								),
-								Image.network(
-									'https://flutter.io/images/catalog-widget-placeholder.png',
-									scale: 1.2,
+								VerticalDivider(),
+								Expanded(
+									child: Image.network(
+										'https://flutter.io/images/catalog-widget-placeholder.png',
+									),
 								),
 							],
 						),
