@@ -72,20 +72,15 @@ class _BookState extends State<BookPage> {
 												color: Colors.lightBlue[500],
 											),
 										),
-										RatingBar(
-											initialRating: 3.5,
+										RatingBarIndicator(
+											rating: 2.6,
 											itemSize: 30,
-											allowHalfRating: true,
-											glowColor: Colors.green,
 											unratedColor: Colors.white,
 											itemCount: 5,
 											itemBuilder: (context, _) => Icon(
 												Icons.star,
 												color: Colors.amber,
 											),
-											onRatingUpdate: (rating) {
-												print(rating);
-											},
 										),
 										FlatButton(
 											onPressed: () {},
