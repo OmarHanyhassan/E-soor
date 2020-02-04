@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
 	final databaseReference = FirebaseDatabase.instance.reference();
 	final AuthService _authService = AuthService();
 	
-	Duration get loginTime => Duration(milliseconds: 2250*20);
+	Duration get loginTime => Duration(milliseconds: 2250);
 	
 	Future<String> _authUser(LoginData data) {
 //		dynamic result = _authService.signInAnon();

@@ -34,7 +34,6 @@ class _SocialState extends State<Social> {
 
 	@override
 	Widget build(BuildContext context) {
-		// TODO: implement build
 		return Scaffold(
 			body: _children[_selectedIndex],
 			bottomNavigationBar: BottomNavigationBar(

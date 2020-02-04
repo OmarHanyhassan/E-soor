@@ -298,7 +298,6 @@ class _MyHomePageState extends State<MyHomePage> {
 	@override
 // ignore: must_call_super
 	void initState() {
-        // TODO: implement initState
         activateSpeechRecognizer();
     }
 	
@@ -379,7 +378,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class AppSearch extends SearchDelegate<String> {
 	@override
-	// TODO: implement keyboardType
 	TextInputType get keyboardType => TextInputType.text;
 
 	final items = List<String>.generate(100, (i) => "Item $i");
@@ -388,13 +386,11 @@ class AppSearch extends SearchDelegate<String> {
 
 	@override
 	ThemeData appBarTheme(BuildContext context) {
-		// TODO: implement appBarTheme
 		return ThemeData.dark();
 	}
 
 	@override
 	List<Widget> buildActions(BuildContext context) {
-		// TODO: implement buildActions
 		return [
 			IconButton(
 				icon: Icon(Icons.clear),
@@ -412,7 +408,6 @@ class AppSearch extends SearchDelegate<String> {
 	String p;
 	@override
 	Widget buildLeading(BuildContext context) {
-		// TODO: implement buildLeading
 		return IconButton(
 			icon: AnimatedIcon(
 				icon: AnimatedIcons.menu_arrow,
@@ -426,7 +421,6 @@ class AppSearch extends SearchDelegate<String> {
 
 	@override
 	Widget buildResults(BuildContext context) {
-		// TODO: implement buildResults
 		return null;
 	}
 
@@ -437,7 +431,6 @@ class AppSearch extends SearchDelegate<String> {
 			: items
 			.where((p) => p.toLowerCase().contains(query.toLowerCase()))
 			.toList();
-		// TODO: implement buildSuggestions
 		return ListView.builder(
 			itemBuilder: (context, index) => ListTile(
 				onTap: () {

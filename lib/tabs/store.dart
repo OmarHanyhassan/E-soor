@@ -21,7 +21,17 @@ class _StoreState extends State<Store> {
                             scrollDirection: Axis.horizontal,
                             child: Padding(
                                 padding: EdgeInsets.all(5),
-                                child: Row(
+                                child: ListView.builder(
+                                    itemBuilder: (context, _) {
+                                        return FlatButton(
+                                            child: Text("Sample"),
+                                            onPressed: () {},
+                                            color: Colors.red,
+                                        );
+                                    },
+                                    itemCount: 8,
+                                ),
+                                /*child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
@@ -36,44 +46,8 @@ class _StoreState extends State<Store> {
                                             onPressed: () {},
                                             color: Colors.red,
                                         ),
-                                            Text("    "),
-                                        FlatButton(
-                                            child: Text("Sample"),
-                                            onPressed: () {},
-                                            color: Colors.red,
-                                        ),
-                                            Text("    "),
-                                        FlatButton(
-                                            child: Text("Sample"),
-                                            onPressed: () {},
-                                            color: Colors.red,
-                                        ),
-                                            Text("    "),
-                                        FlatButton(
-                                            child: Text("Sample"),
-                                            onPressed: () {},
-                                            color: Colors.red,
-                                        ),
-                                            Text("    "),
-                                        FlatButton(
-                                            child: Text("Sample"),
-                                            onPressed: () {},
-                                            color: Colors.red,
-                                        ),
-                                            Text("    "),
-                                        FlatButton(
-                                            child: Text("Sample"),
-                                            onPressed: () {},
-                                            color: Colors.red,
-                                        ),
-                                            Text("    "),
-                                        FlatButton(
-                                            child: Text("Sample"),
-                                            onPressed: () {},
-                                            color: Colors.red,
-                                        ),
                                     ],
-                                ),
+                                ),*/
                             ),
                         ),
 
