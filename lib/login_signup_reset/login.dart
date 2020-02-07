@@ -14,8 +14,8 @@ class LoginPage extends StatelessWidget {
 	final databaseReference = FirebaseDatabase.instance.reference();
 	final AuthService _authService = AuthService();
 	
-	Duration get loginTime => Duration(milliseconds: 2250);
-	
+	Duration get loginTime => Duration(milliseconds: 1800);
+
 	Future<String> _authUser(LoginData data) {
 //		dynamic result = _authService.signInAnon();
 //		if (result = null) {
@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
 //			print("signed in");
 //			print(result);
 //		}
-		createRecord();
+		/*createRecord();*/
 		print('Name: ${data.name}, Password: ${data.password}');
 		return Future.delayed(loginTime).then((_) {
 			if (!users.containsKey(data.name)) {
