@@ -45,20 +45,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void _showModalSheet() {
-    showModalBottomSheet(
-        context: context,
-        builder: (builder) {
-          return Column(
-            children: <Widget>[
-              Text("Checkout"),
-              Container(
-                color: Colors.green,
-              )
-            ],
-          );
-        });
-  }
 
   TextEditingController _controller = new TextEditingController();
 
@@ -127,10 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     ? () => start()
                     : () => stop(),
                 label: _isListening ? 'Listening...' : '',
-              ),
-              IconButton(
-                onPressed: _showModalSheet,
-                icon: Icon(Icons.shopping_cart),
               ),
             ],
           ),
