@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../store/book_page.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class Store extends StatefulWidget {
 	@override
@@ -10,6 +11,10 @@ class Store extends StatefulWidget {
 class _StoreState extends State<Store> {
 	ScrollController scrollController = new ScrollController();
 	int price = 60;
+	BorderRadiusGeometry radius = BorderRadius.only(
+		topLeft: Radius.circular(25.0),
+		topRight: Radius.circular(25.0),
+	);
 
 	@override
 	Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class _StoreState extends State<Store> {
 							scrollDirection: Axis.horizontal,
 							child: Padding(
 								padding: EdgeInsets.all(5),
-								child: ListView.builder(
+								/*child: ListView.builder(
 									itemBuilder: (context, _) {
 										return FlatButton(
 											child: Text("Sample"),
@@ -31,8 +36,8 @@ class _StoreState extends State<Store> {
 										);
 									},
 									itemCount: 8,
-								),
-								/*child: Row(
+								),*/
+								child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
@@ -47,8 +52,32 @@ class _StoreState extends State<Store> {
                                             onPressed: () {},
                                             color: Colors.red,
                                         ),
+										    Text("    "),
+                                        FlatButton(
+                                            child: Text("Sample"),
+                                            onPressed: () {},
+                                            color: Colors.red,
+                                        ),
+										    Text("    "),
+                                        FlatButton(
+                                            child: Text("Sample"),
+                                            onPressed: () {},
+                                            color: Colors.red,
+                                        ),
+										    Text("    "),
+                                        FlatButton(
+                                            child: Text("Sample"),
+                                            onPressed: () {},
+                                            color: Colors.red,
+                                        ),
+										    Text("    "),
+                                        FlatButton(
+                                            child: Text("Sample"),
+                                            onPressed: () {},
+                                            color: Colors.red,
+                                        ),
                                     ],
-                                ),*/
+                                ),
 							),
 						),
 
@@ -4140,6 +4169,28 @@ class _StoreState extends State<Store> {
 							],
 						),
 					],
+				),
+				bottomNavigationBar: SlidingUpPanel(
+					borderRadius: radius,
+					maxHeight: 300,
+					backdropEnabled: true,
+					minHeight: 30,
+					controller: PanelController(),
+					panel: Center(
+					child: Text(
+						"Hola",
+						style: TextStyle(
+						fontSize: 40,
+						),
+					),
+					),
+					collapsed: Container(
+						child: Center(child: Text("Checkout"),),
+						decoration: BoxDecoration(
+							borderRadius: radius,
+							color: Colors.green,
+						),
+					),
 				),
 			),
 		);
