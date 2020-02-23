@@ -30,7 +30,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 								mainAxisAlignment: MainAxisAlignment.start,
 								children: <Widget>[
 									Text("Acc Name"),
-									SizedBox(width: 70,),
+									SizedBox(width: size.width*0.2,),
 									Text(
 										"Verification",
 										style: TextStyle(
@@ -48,7 +48,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 											children: <Widget>[
 												Text("$friendsNum" + " mutual friend"),
 												SizedBox(
-													width: 150,
+													width: size.width*0.25,
 												),
 												Text("Time"),
 											],
@@ -66,6 +66,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 													),
 													onPressed: () {},
 												),
+                                                    SizedBox(width: size.width*0.01,),
 												RaisedButton(
 													color: Colors.red,
 													child: Row(
