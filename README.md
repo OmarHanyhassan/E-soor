@@ -10,9 +10,20 @@ You - as a publisher - can start with signing up in the app. After that, the jou
 
 ## Screenshots
 
+This's what you will see everytime when you open the app.
+
 ![Screenshots](starting.png)
+
+This is the login screen.
+
 ![Screenshots](login.png)
+
+This is the signup screen.
+
 ![Screenshots](signup.png)
+
+This is the Store screen.
+
 ![Screenshots](store.png)
 
 
