@@ -33,10 +33,42 @@ class _FeedState extends State<Feed> {
 												Text("Date & Time"),
 											],
 										),
-										trailing: IconButton(
-											icon: Icon(Icons.more_horiz),
-											onPressed: () {},
-										),
+										trailing: PopupMenuButton<int>(
+                      icon: Icon(Icons.more_horiz),
+                      onSelected: (value) {
+                        print("value:$value");
+                      },
+                      itemBuilder: (context) => [
+                        PopupMenuItem(
+                          height: 10,
+                          value: 1,
+                          child: Chip(
+                            avatar: Icon(Icons.report),
+                            label: Text("Report"),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          height: 10,
+                          value: 4,
+                          child: Chip(
+                            avatar: Icon(Icons.notifications_off),
+                            label: Text("Mute"),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          child: Chip(
+                            avatar: Icon(Icons.bookmark_border),
+                            label: Text("Save post"),
+                          ),
+                        ),
+                        PopupMenuItem(
+                          child: Chip(
+                            avatar: Icon(Icons.link),
+                            label: Text("Copy link"),
+                          ),
+                        ),
+                      ],
+                    ),
 									),
 									Padding(
 												padding: EdgeInsets.all(10),
