@@ -3,11 +3,9 @@ import 'package:E_Soor/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:E_Soor/services/api.dart' as api;
 
-const users = const {
-	'OmarYehiaDev@e-soor.com': '123456',
-	'AhmedTarek@e-soor.com': '123456',
-};
+var users = api.getUsers();
 
 class LoginPage extends StatelessWidget {
 	
@@ -25,13 +23,10 @@ class LoginPage extends StatelessWidget {
 //			print(result);
 //		}
 		/*createRecord();*/
-		print('Name: ${data.name}, Password: ${data.password}');
+		print('Email: ${data.name}, Password: ${data.password}');
 		return Future.delayed(loginTime).then((_) {
-			if (!users.containsKey(data.name)) {
+			if (!users.containskey(data.name)) {
 				return 'Username not exists';
-			}
-			if (users[data.name] != data.password) {
-				return 'Password does not match';
 			}
 			return null;
 		});
