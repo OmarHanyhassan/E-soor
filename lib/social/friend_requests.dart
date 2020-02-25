@@ -14,7 +14,15 @@ class _FriendRequestsState extends State<FriendRequests> {
 	Widget build(BuildContext context) {
 		Size size = MediaQuery.of(context).size;
 		return Scaffold(
-			body: ListView.separated(
+      backgroundColor: Colors.transparent,
+      // TODO: Implement backgroundImage
+			body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage("https://i.imgur.com/NakfHv4g.jpg",),
+          ),
+        ),
+        child: ListView.separated(
 				itemBuilder: (context, position) {
 					return Card(
 						elevation: 10,
@@ -30,7 +38,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 								mainAxisAlignment: MainAxisAlignment.start,
 								children: <Widget>[
 									Text("Acc Name"),
-									SizedBox(width: 70,),
+									SizedBox(width: size.width*0.2,),
 									Text(
 										"Verification",
 										style: TextStyle(
@@ -48,7 +56,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 											children: <Widget>[
 												Text("$friendsNum" + " mutual friend"),
 												SizedBox(
-													width: 150,
+													width: size.width*0.25,
 												),
 												Text("Time"),
 											],
@@ -66,6 +74,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 													),
 													onPressed: () {},
 												),
+                                                    SizedBox(width: size.width*0.01,),
 												RaisedButton(
 													color: Colors.red,
 													child: Row(
@@ -89,6 +98,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 				},
 				itemCount: 21,
 			),
+      ),
 		);
 	}
 }
