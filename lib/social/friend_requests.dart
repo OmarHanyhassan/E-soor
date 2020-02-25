@@ -14,7 +14,15 @@ class _FriendRequestsState extends State<FriendRequests> {
 	Widget build(BuildContext context) {
 		Size size = MediaQuery.of(context).size;
 		return Scaffold(
-			body: ListView.separated(
+      backgroundColor: Colors.transparent,
+      // TODO: Implement backgroundImage
+			body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage("https://i.imgur.com/NakfHv4g.jpg",),
+          ),
+        ),
+        child: ListView.separated(
 				itemBuilder: (context, position) {
 					return Card(
 						elevation: 10,
@@ -90,6 +98,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 				},
 				itemCount: 21,
 			),
+      ),
 		);
 	}
 }
