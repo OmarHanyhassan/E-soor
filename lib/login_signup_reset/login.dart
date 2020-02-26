@@ -5,7 +5,9 @@ import 'package:flutter_login/flutter_login.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:E_Soor/services/api.dart' as api;
 
-var users = api.getUsers();
+get users async{
+return await api.getUsers();
+}
 
 class LoginPage extends StatelessWidget {
 	
