@@ -26,8 +26,8 @@ class LoginPage extends StatelessWidget {
 //		}
 		/*createRecord();*/
     print('Email: ${data.name}, Password: ${data.password}');
-		return Future.delayed(loginTime).then((_) {
-			if (!users.contains(data.name)) {
+		return Future.delayed(loginTime).then((_) async{
+			if (!(await users).contains(data.name)) {
 				return 'Username not exists';
 			}
 			return null;
@@ -36,8 +36,8 @@ class LoginPage extends StatelessWidget {
 	
 	Future<String> _recoverPassword(String name) {
 		print('Name: $name');
-		return Future.delayed(loginTime).then((_) {
-			if (!users.contains(name)) {
+		return Future.delayed(loginTime).then((_) async{
+			if (!(await users).contains(name)) {
 				return 'Username not exists';
 			}
 			return null;
