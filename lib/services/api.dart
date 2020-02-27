@@ -8,7 +8,7 @@ getUsers () async {
 	var headers = await http.get("http://my-json-server.typicode.com/OmarYehiaDev/E-Soor/db", headers: {
 		'Content-Type': 'application/json',
 	});
-	users = await convert.jsonDecode(headers.body);
+	users = convert.jsonDecode(req.body);
 	users.forEach((user){
 		return user;
 	});

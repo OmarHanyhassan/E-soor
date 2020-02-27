@@ -6,7 +6,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:E_Soor/services/api.dart' as api;
 
 get users async{
-return await api.getUsers();
+  return await api.getUsers();
 }
 
 class LoginPage extends StatelessWidget {
@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
 //		}
 		/*createRecord();*/
     print('Email: ${data.name}, Password: ${data.password}');
-		return Future.delayed(loginTime).then((_) async{
+		return Future.delayed(loginTime).then((_) async {
 			if (!(await users).contains(data.name)) {
 				return 'Username not exists';
 			}
@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
 	
 	Future<String> _recoverPassword(String name) {
 		print('Name: $name');
-		return Future.delayed(loginTime).then((_) async{
+		return Future.delayed(loginTime).then((_) async {
 			if (!(await users).contains(name)) {
 				return 'Username not exists';
 			}
