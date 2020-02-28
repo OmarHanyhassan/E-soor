@@ -8,17 +8,20 @@ import 'package:http/http.dart' as http;
 
 
 class User {
-  final String name ;
-  final String password ;
+  final String name;
+  final String password;
+  final Image profileImage;
   User({
     @required this.name,
-    @required this.password,    
+    @required this.password, 
+    this.profileImage,   
   });
 
   factory User.fromJson(Map<String,dynamic> json){
     return User(
-      name: json['name'],
-      password: json['password'],
+      name: json['name'] as String,
+      password: json['password'] as String,
+      profileImage: json['profileImage'] as Image,
     );
   }
 
