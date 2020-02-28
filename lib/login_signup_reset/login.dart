@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:E_Soor/services/api.dart' as api;
+import 'package:googleapis/admin/directory_v1.dart';
 
 get users async{
   return await api.getUsers();
@@ -26,21 +27,30 @@ class LoginPage extends StatelessWidget {
 //		}
 		/*createRecord();*/
     print('Email: ${data.name}, Password: ${data.password}');
-		return Future.delayed(loginTime).then((_) async {
-			if (!(await users).contains(data.name)) {
-				return 'Username not exists';
-			}
-			return null;
+    //users.then(print(users));
+  	Future.delayed(loginTime).then((_) async {
+      //can't close the debugger?
+      //Ok great
+      // :")"
+			// if (!(await users).contains(data.name)) {
+			// 	return 'Username not exists';
+			// }
+      // I think we should take an instance of User() and make the condition on it...
+      if (! (users).contains(data.name)) {
+        return 'Username not exists';
+      }
+      return null;
+			
 		});
 	}
 	
 	Future<String> _recoverPassword(String name) {
 		print('Name: $name');
 		return Future.delayed(loginTime).then((_) async {
-			if (!(await users).contains(name)) {
-				return 'Username not exists';
-			}
-			return null;
+			if (! (users).contains(name)) {
+        return 'Username not exists';
+      }
+      return null;
 		});
 	}
 	
@@ -59,12 +69,6 @@ class LoginPage extends StatelessWidget {
 			messages: LoginMessages(
 				usernameHint: 'Email',
 				passwordHint: 'Password',
-				confirmPasswordHint: 'Write password again',
-				loginButton: 'LOG IN',
-				signupButton: 'REGISTER',
-				forgotPasswordButton: 'Forgot password ?',
-				recoverPasswordButton: 'HELP ME',
-				goBackButton: 'GO BACK',
 				confirmPasswordError: 'Not match!',
 				recoverPasswordDescription:
 				'Write your email to find your account',

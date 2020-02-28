@@ -1,15 +1,51 @@
 import 'dart:convert' as convert;
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-var users;
+// let's debug?
+//Ok
+//This is great we have the user list now
+
+
+class User {
+  final String name ;
+  final String password ;
+  User({
+    @required this.name,
+    @required this.password,    
+  });
+
+  factory User.fromJson(Map<String,dynamic> json){
+    return User(
+      name: json['name'],
+      password: json['password'],
+    );
+  }
+
+  
+}
+
 
 getUsers () async {
-	var req = await http.get("http://my-json-server.typicode.com/OmarYehiaDev/E-Soor/db");
-	var headers = await http.get("http://my-json-server.typicode.com/OmarYehiaDev/E-Soor/db", headers: {
+  List<User> users = [];
+	//var req = await http.get("http://my-json-server.typicode.com/OmarYehiaDev/E-Soor/db");
+	var headers = await http.get("https://api.jsonbin.io/b/5e58fd4b1534d9052ce38751", headers: {
 		'Content-Type': 'application/json',
 	});
-	users = convert.jsonDecode(req.body);
-	users.forEach((user){
-		return user;
-	});
+  if (headers.statusCode == 200) {
+      print(headers.statusCode);
+      String jsonString = headers.body.toString();
+      print(jsonString);
+	    final decodedUsers = convert.jsonDecode(jsonString);
+      decodedUsers.forEach((v){
+        users.add(User.fromJson(v));
+      });
+      print(users);
+	    users.forEach((user) {
+		    return user;
+	    });
+    } else {
+      print(headers.statusCode);
+    }
+  
 }

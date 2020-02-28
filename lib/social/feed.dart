@@ -90,16 +90,20 @@ class _FeedState extends State<Feed> {
 										mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 										children: <Widget>[
 											FlatButton(
-												onPressed: () {},
+                        // TODO: Implement reacting functions.
+												onLongPress: () {},
+                        onPressed: () {},
 												child: Text("React"),
 												color: Colors.green,
 											),
 											RaisedButton(
+                        // TODO: Implement commenting function.
 												onPressed: () {},
 												child: Text("Comment"),
 												color: Colors.green,
 											),
 											RaisedButton(
+                        // TODO: Implement sharing function.
 												onPressed: () {},
 												child: Text("Share"),
 												color: Colors.green,
