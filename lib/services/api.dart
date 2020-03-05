@@ -2,11 +2,6 @@ import 'dart:convert' as convert;
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-// let's debug?
-//Ok
-//This is great we have the user list now
-
-
 class User {
   final String name;
   final String password;

@@ -13,92 +13,91 @@ class _FriendRequestsState extends State<FriendRequests> {
 	@override
 	Widget build(BuildContext context) {
 		Size size = MediaQuery.of(context).size;
-		return Scaffold(
-      backgroundColor: Colors.transparent,
-      // TODO: Implement backgroundImage
-			body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage("https://i.imgur.com/NakfHv4g.jpg",),
-          ),
+		return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: ExactAssetImage("images/bg.png"),
         ),
-        child: ListView.separated(
-				itemBuilder: (context, position) {
-					return Card(
-						elevation: 10,
-						child: ListTile(
-							isThreeLine: true,
-							leading: SizedBox(
-								child: CircleAvatar(
-									maxRadius: 30,
-									backgroundImage: ExactAssetImage("images/mmm.jpg"),
-								),
-							),
-							title: Row(
-								mainAxisAlignment: MainAxisAlignment.start,
-								children: <Widget>[
-									Text("Acc Name"),
-									SizedBox(width: size.width*0.2,),
-									Text(
-										"Verification",
-										style: TextStyle(
-											color: Colors.red
-										),
-									),
-								],
-							),
-							subtitle: Padding(
-								padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-								child: Column(
-									crossAxisAlignment: CrossAxisAlignment.start,
-									children: <Widget>[
-										Row(
-											children: <Widget>[
-												Text("$friendsNum" + " mutual friend"),
-												SizedBox(
-													width: size.width*0.25,
-												),
-												Text("Time"),
-											],
-										),
-										ButtonBar(
-											alignment: MainAxisAlignment.center,
-											children: <Widget>[
-												RaisedButton(
-													color: Colors.green,
-													child: Row(
-														children: <Widget>[
-															Icon(Icons.done,),
-															Text("Accept"),
-														],
-													),
-													onPressed: () {},
-												),
-                                                    SizedBox(width: size.width*0.01,),
-												RaisedButton(
-													color: Colors.red,
-													child: Row(
-														children: <Widget>[
-															Icon(Icons.close,),
-															Text("Decline"),
-														],
-													),
-													onPressed: () {},
-												),
-											],
-										),
-									],
-								),
-							),
-						),
-					);
-				},
-				separatorBuilder: (context, position) {
-					return SizedBox(height: 20,);
-				},
-				itemCount: 21,
-			),
       ),
-		);
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: ListView.separated(
+          itemBuilder: (context, position) {
+            return Card(
+              elevation: 10,
+              child: ListTile(
+                isThreeLine: true,
+                leading: SizedBox(
+                  child: CircleAvatar(
+                    maxRadius: 30,
+                    backgroundImage: ExactAssetImage("images/mmm.jpg"),
+                  ),
+                ),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text("Acc Name"),
+                    SizedBox(width: size.width*0.2,),
+                    Text(
+                      "Verification",
+                      style: TextStyle(
+                        color: Colors.red
+                      ),
+                    ),
+                  ],
+                ),
+                subtitle: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Text("$friendsNum" + " mutual friend"),
+                          SizedBox(
+                            width: size.width*0.25,
+                          ),
+                          Text("Time"),
+                        ],
+                      ),
+                      ButtonBar(
+                        alignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          RaisedButton(
+                            color: Colors.green,
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.done,),
+                                Text("Accept"),
+                              ],
+                            ),
+                            onPressed: () {},
+                          ),
+                                                      SizedBox(width: size.width*0.01,),
+                          RaisedButton(
+                            color: Colors.red,
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.close,),
+                                Text("Decline"),
+                              ],
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+          separatorBuilder: (context, position) {
+            return SizedBox(height: 20,);
+          },
+          itemCount: 21,
+        ),
+      ),
+    );
 	}
 }

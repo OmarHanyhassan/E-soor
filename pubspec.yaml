@@ -20,16 +20,13 @@ dependencies:
   flutter:
     sdk: flutter
   splashscreen:
-  flutter_login: ^1.0.4
+  flutter_login: any
   sliding_up_panel: ^1.0.0
 
   flutter_rating_bar: ^3.0.0
   circular_profile_avatar: ^1.0.2
   speech_recognition: ^0.3.0+1
   permission_handler: ^3.2.0
-  firebase_auth:
-  cloud_firestore:
-  firebase_database:
   login: any
   googleapis: any
   googleapis_auth: any

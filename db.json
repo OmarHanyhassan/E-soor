@@ -1,5 +1,4 @@
-[
-	
+[	
 	{
 		"id": 8,
 		"name": "Nicholas Runolfsdottir V",
@@ -21,7 +20,6 @@
 		"name": "Clementina DuBuque",
 		"username": "Moriah.Stanton",
 		"email": "Rey.Padberg@karina.biz",
-		
 		"password": "8px8F9"
 	},
 	{
@@ -37,5 +35,12 @@
 		"username": "JavTh0n",
 		"email": "JavTh0n@e-soor.com",
 		"password": "213456"
+	},
+	{
+		"id": 13,
+		"name": "Amro Khaled",
+		"username": "AmroKhaled011",
+		"email": "meto.khaled011@gmail.com",
+		"password": "3kamro"
 	}
 ]
