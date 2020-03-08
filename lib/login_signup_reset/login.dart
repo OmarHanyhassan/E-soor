@@ -24,6 +24,7 @@ class LoginPage extends StatelessWidget {
 		});
 	}
 
+  // TODO: Revising the function
   Future<String> _authUserSignup(LoginData data) {
     print('Email: ${data.email}, Password: ${data.password}');
   	Future.delayed(loginTime).then((_) async {

@@ -1,5 +1,5 @@
 name: E_Soor
-description: A new Flutter application.
+description: Online Bookstore and socialmedia
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -54,10 +54,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/a.jpg
-    - images/mmm.jpg
-    - images/logo.png
-    - images/bg.png
+    - images/
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

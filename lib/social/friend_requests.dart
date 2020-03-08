@@ -16,6 +16,7 @@ class _FriendRequestsState extends State<FriendRequests> {
 		return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
+          fit: BoxFit.fill,
           image: ExactAssetImage("images/bg.png"),
         ),
       ),
