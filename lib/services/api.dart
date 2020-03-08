@@ -6,17 +6,29 @@ class User {
   final String name;
   final String password;
   final Image profileImage;
+  final String username;
   User({
     @required this.name,
     @required this.password, 
-    this.profileImage,   
+    this.profileImage,
+    this.username, 
   });
 
-  factory User.fromJson(Map<String,dynamic> json){
+  factory User.fromJson(Map<String,dynamic> json) {
     return User(
       name: json['name'] as String,
+      username: json['username'] as String,
       password: json['password'] as String,
       profileImage: json['profileImage'] as Image,
+    );
+  }
+
+  factory User.toJson(Map<String,dynamic> data) {
+    return User(
+      name: data['name'] as String,
+      username: data['username'] as String,
+      password: data['password'] as String,
+      profileImage: data['profileImage'] as Image,
     );
   }
 
