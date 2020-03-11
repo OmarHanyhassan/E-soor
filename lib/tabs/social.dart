@@ -4,7 +4,7 @@ import 'package:E_Soor/social/feed.dart';
 import 'package:E_Soor/social/chats.dart';
 import 'package:E_Soor/social/friend_requests.dart';
 import 'package:E_Soor/social/network.dart';
-import 'package:E_Soor/social/settings.dart';
+import 'package:E_Soor/social/profile.dart';
 
 class Social extends StatefulWidget {
 	@override
@@ -28,7 +28,7 @@ class _SocialState extends State<Social> {
 			Chats(),
 		),
 		PlaceholderWidget(
-			Settings(),
+			Profile(),
 		),
 	];
 
@@ -63,8 +63,8 @@ class _SocialState extends State<Social> {
 					),
 					// Settings Icon
 					BottomNavigationBarItem(
-						title: Text("Settings"),
-						icon: Icon(Icons.settings_applications),
+						title: Text("Profile"),
+						icon: Icon(Icons.person),
 					),
 				],
 			),

@@ -1,3 +1,4 @@
+import 'package:E_Soor/store/category.dart';
 import 'package:flutter/material.dart';
 import '../store/book_page.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -47,37 +48,37 @@ class _StoreState extends State<Store> {
                       children: <Widget>[
                         FlatButton(
                           child: Text("Sample"),
-                          onPressed: () {},
+                          onPressed: openCategoryPage,
                           color: Colors.red,
                         ),
                         Text("    "),
                         FlatButton(
                           child: Text("Sample"),
-                          onPressed: () {},
+                          onPressed: openCategoryPage,
                           color: Colors.red,
                         ),
                         Text("    "),
                         FlatButton(
                           child: Text("Sample"),
-                          onPressed: () {},
+                          onPressed: openCategoryPage,
                           color: Colors.red,
                         ),
                         Text("    "),
                         FlatButton(
                           child: Text("Sample"),
-                          onPressed: () {},
+                          onPressed: openCategoryPage,
                           color: Colors.red,
                         ),
                         Text("    "),
                         FlatButton(
                           child: Text("Sample"),
-                          onPressed: () {},
+                          onPressed: openCategoryPage,
                           color: Colors.red,
                         ),
                         Text("    "),
                         FlatButton(
                           child: Text("Sample"),
-                          onPressed: () {},
+                          onPressed: openCategoryPage,
                           color: Colors.red,
                         ),
                       ],
@@ -778,7 +779,7 @@ class _StoreState extends State<Store> {
                       title: Text("For You"),
                       trailing: IconButton(
                         icon: Icon(Icons.more_horiz),
-                        onPressed: () {},
+                        onPressed: openCategoryPage,
                       ),
                     ),
                     SingleChildScrollView(
@@ -1459,7 +1460,7 @@ class _StoreState extends State<Store> {
                       title: Text("For You"),
                       trailing: IconButton(
                         icon: Icon(Icons.more_horiz),
-                        onPressed: () {},
+                        onPressed: openCategoryPage,
                       ),
                     ),
                     SingleChildScrollView(
@@ -2140,7 +2141,7 @@ class _StoreState extends State<Store> {
                       title: Text("For You"),
                       trailing: IconButton(
                         icon: Icon(Icons.more_horiz),
-                        onPressed: () {},
+                        onPressed: openCategoryPage,
                       ),
                     ),
                     SingleChildScrollView(
@@ -2821,7 +2822,7 @@ class _StoreState extends State<Store> {
                       title: Text("For You"),
                       trailing: IconButton(
                         icon: Icon(Icons.more_horiz),
-                        onPressed: () {},
+                        onPressed: openCategoryPage,
                       ),
                     ),
                     SingleChildScrollView(
@@ -3502,7 +3503,7 @@ class _StoreState extends State<Store> {
                       title: Text("For You"),
                       trailing: IconButton(
                         icon: Icon(Icons.more_horiz),
-                        onPressed: () {},
+                        onPressed: openCategoryPage,
                       ),
                     ),
                     SingleChildScrollView(
@@ -4200,7 +4201,7 @@ class _StoreState extends State<Store> {
                                     ),
                                 ),
                                 trailing: IconButton(
-                                    onPressed: () {},
+                                    onPressed: openCategoryPage,
                                     icon: Icon(Icons.delete),
                                 ),
                             ),
@@ -4272,7 +4273,7 @@ class _StoreState extends State<Store> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: new BorderRadius.circular(50.0),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: openCategoryPage,
                                 ),
                             ),
                         ],
@@ -4298,5 +4299,9 @@ class _StoreState extends State<Store> {
   void openBookPage() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => BookPage()));
+  }
+  void openCategoryPage() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Category()));
   }
 }

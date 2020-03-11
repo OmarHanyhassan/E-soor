@@ -1,5 +1,5 @@
-import 'package:E_Soor/help/edit_profile.dart';
 import 'package:E_Soor/other/about_dev.dart';
+import 'package:E_Soor/login_signup_reset/login.dart';
 import 'package:E_Soor/other/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -133,10 +133,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           onDetailsPressed: () {},
                         ),
                         ListTile(
-                            leading: Icon(Icons.edit),
-                            title: Text("Edit Profile"),
-                            onTap: editProfile),
-                        ListTile(
                           leading: Icon(Icons.security),
                           title: Text("Privacy"),
                           onTap: () {},
@@ -155,6 +151,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           leading: Icon(Icons.settings),
                           title: Text("Settings"),
                           onTap: goToSettings,
+                        ),
+                        ListTile(
+                            leading: Icon(Icons.backspace),
+                            title: Text("Log out"),
+                            onTap: logOut,
                         ),
                       ],
                     ),
@@ -287,11 +288,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void editProfile() {
+  void logOut() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => EditProfile(),
+        builder: (context) => LoginPage(),
       ),
     );
   }

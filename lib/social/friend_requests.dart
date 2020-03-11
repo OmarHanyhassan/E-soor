@@ -17,7 +17,7 @@ class _FriendRequestsState extends State<FriendRequests> {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: ExactAssetImage("images/bg.png"),
+          image: ExactAssetImage("images/bgM.png"),
         ),
       ),
       child: Scaffold(
