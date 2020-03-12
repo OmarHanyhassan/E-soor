@@ -4269,11 +4269,11 @@ class _StoreState extends State<Store> {
                             Padding(
                                 padding: EdgeInsets.fromLTRB(75, 0, 75, 2),
                                 child: RaisedButton(
-                                    child: Text("Checkout"),
+                                    child: Text("Order"),
                                     shape: RoundedRectangleBorder(
                                         borderRadius: new BorderRadius.circular(50.0),
                                     ),
-                                    onPressed: openCategoryPage,
+                                    onPressed: (){},
                                 ),
                             ),
                         ],
@@ -4281,7 +4281,7 @@ class _StoreState extends State<Store> {
                 ),
                 collapsed: Container(
                   child: Center(
-                    child: Text("Checkout"),
+                    child: Text("Cart"),
                   ),
                   decoration: BoxDecoration(
                     borderRadius: radius,
