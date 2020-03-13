@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:E_Soor/services/api.dart' as api;
 import 'package:googleapis/admin/directory_v1.dart';
+import 'package:http/http.dart';
 
 get users async{
   return await api.getUsers();
@@ -28,9 +29,11 @@ class LoginPage extends StatelessWidget {
   Future<String> _authUserSignup(LoginData data) {
     print('Email: ${data.email}, Password: ${data.password}');
   	Future.delayed(loginTime).then((_) async {
-      users.put(
-        User().primaryEmail = data.email,
-        User().password = data.password,
+      post(
+        api.User(
+          name: data.email,
+          password: data.password 
+        )
       );
       print(users);
       return null;

@@ -71,19 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scaffold(
           primary: true,
           appBar: AppBar(
-            bottom: TabBar(
-              indicatorColor: Colors.white,
-              tabs: <Widget>[
-                Tab(
-                  text: "Store",
-                  icon: Icon(Icons.store),
-                ),
-                Tab(
-                  text: "Social",
-                  icon: Icon(Icons.people),
-                )
-              ],
-            ),
             titleSpacing: 0,
             title: FlatButton(
               onPressed: () {
@@ -165,110 +152,40 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
 
-          body: RefreshIndicator(
-            onRefresh: () {},
-            child: TabBarView(
-              children: <Widget>[
-                Store(),
-                Social(),
-              ],
-            ),
+          body: CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                expandedHeight: 50,
+                pinned: false,
+                flexibleSpace: TabBar(
+                  indicatorColor: Colors.white,
+                  tabs: <Widget>[
+                    Tab(
+                      text: "Store",
+                      icon: Icon(Icons.store),
+                    ),
+                    Tab(
+                      text: "Social",
+                      icon: Icon(Icons.people),
+                    )
+                  ],
+                ),
+              ),
+              RefreshIndicator(
+                  onRefresh: () {},
+                  child: TabBarView(
+                    children: <Widget>[
+                      Store(),
+                      Social(),
+                    ],
+                ),
+              ),
+            ],
           ),
-//                    ListView(
-//                        children: <Widget>[
-//                            Icon(Icons.face),
-//                            Center(
-//                                child: Text(""),
-//                            ),
-//                            Card(
-//                                semanticContainer: true,
-//                                child: Column(
-//                                    children: <Widget>[
-//                                        Image.asset('assets/images/a.jpg', fit: BoxFit.cover,),
-//                                        Text("Book Name"),
-//                                        Padding(
-//                                            padding: EdgeInsets.all(50),
-//                                            child: Row(
-//                                                children: <Widget>[
-//                                                    Text("Author Name"),
-//                                                    Text(price.toString() + " LE"),
-//                                                ],
-//                                            ),
-//                                        ),
-//                                        Row(
-//                                            mainAxisSize: MainAxisSize.min,
-//                                            crossAxisAlignment: CrossAxisAlignment.center,
-//                                            children: <Widget>[
-//                                                Column(
-//
-//                                                    children: <Widget>[
-//                                                        Icon(Icons.star),
-//                                                        Icon(Icons.star),
-//                                                        Icon(Icons.star),
-//                                                        Icon(Icons.star),
-//                                                        Icon(Icons.star),
-//                                                    ],
-//                                                ),
-//                                            ],
-//                                        )
-//                                    ],
-//                                ),
-//                            ),
-//                        ]
-//                    ),
         ),
       ),
     );
   }
-
-//  void test() {
-//        search();
-//  }
-//
-//  void search() {
-//      iconButton = Container(
-//          child: Row(
-//              children: <Widget>[
-//                  IconButton(icon: Icon(Icons.search), onPressed: search,)
-//              ],
-//          ),
-//      );
-//        setState(() {
-//            iconButton = searchBar;
-//        });
-//  }
-//    Container iconButton;
-//    Container searchBar = Container(
-//        child: Row(
-//            children: <Widget>[
-//                IconButton(
-//                    icon: Icon(Icons.search), onPressed: () {},
-//                ),
-//                TextField(
-//                    cursorColor: Colors.black,
-//                    autocorrect: true,
-//                    decoration:InputDecoration(
-//                        filled: true,
-//                        fillColor: Colors.white,
-//                        prefixIcon: Icon(Icons.search, color: Colors.black,),
-//                        hintText: 'Search',
-//                        hintStyle: TextStyle(
-//                            color: Colors.black,
-//                        ),
-//                        border: OutlineInputBorder(
-//                            borderRadius: BorderRadius.all(Radius.circular(100),),
-//                        ),
-//                    ),
-//                    textAlign: TextAlign.center,
-//                    textCapitalization: TextCapitalization.words,
-//                    style: TextStyle(
-//                        fontSize: 20.0,
-//                        color: Colors.black,
-//                    ),
-//                ),
-//            ],
-//        ),
-//    );
 
   void goToSettings() {
     Navigator.push(
@@ -289,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void logOut() {
-    Navigator.push(
+    Navigator.pop(
       context,
       MaterialPageRoute(
         builder: (context) => LoginPage(),
