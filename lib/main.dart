@@ -171,13 +171,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-              RefreshIndicator(
+              SliverToBoxAdapter(
+                child: RefreshIndicator(
                   onRefresh: () {},
                   child: TabBarView(
                     children: <Widget>[
                       Store(),
                       Social(),
                     ],
+                  ),
                 ),
               ),
             ],
