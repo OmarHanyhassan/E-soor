@@ -1,6 +1,7 @@
 import 'package:E_Soor/other/about_dev.dart';
 import 'package:E_Soor/login_signup_reset/login.dart';
 import 'package:E_Soor/other/splash_screen.dart';
+import 'package:E_Soor/social/feed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'E-Soor',
       theme: ThemeData.dark(),
       home: MySplashScreen(),
+      //home: Feed(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -45,7 +47,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   TextEditingController _controller = new TextEditingController();
 
   SpeechRecognition speechRecognition;
@@ -70,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
         length: 2,
         child: Scaffold(
           primary: true,
-          appBar: AppBar(
+          /*appBar: AppBar(
             titleSpacing: 0,
             title: FlatButton(
               onPressed: () {
@@ -102,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 label: _isListening ? 'Listening...' : '',
               ),
             ],
-          ),
+          ),*/
           drawer: SizedBox(
             height: size.height,
             child: Drawer(
@@ -140,9 +141,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           onTap: goToSettings,
                         ),
                         ListTile(
-                            leading: Icon(Icons.backspace),
-                            title: Text("Log out"),
-                            onTap: logOut,
+                          leading: Icon(Icons.backspace),
+                          title: Text("Log out"),
+                          onTap: logOut,
                         ),
                       ],
                     ),
@@ -151,13 +152,44 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-
           body: CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                expandedHeight: 50,
-                pinned: false,
-                flexibleSpace: TabBar(
+                primary: true,
+                titleSpacing: 0,
+                title: FlatButton(
+                  onPressed: () {
+                    showSearchPage(context, AppSearch(), transcription);
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.search,
+                        size: 25,
+                      ),
+                      Text(
+                        " Search",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                centerTitle: true,
+                actions: <Widget>[
+                  _buildVoiceInput(
+                    onPressed: _speechRecognitionAvailable && !_isListening
+                        ? () => start()
+                        : () => stop(),
+                    label: _isListening ? 'Listening...' : '',
+                  ),
+                ],
+                floating: true,
+                pinned: true,
+                bottom: TabBar(
                   indicatorColor: Colors.white,
                   tabs: <Widget>[
                     Tab(
@@ -171,14 +203,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-              SliverToBoxAdapter(
-                child: RefreshIndicator(
-                  onRefresh: () {},
-                  child: TabBarView(
-                    children: <Widget>[
-                      Store(),
-                      Social(),
-                    ],
+              SliverPadding(
+                padding: EdgeInsets.only(top: 30),
+                sliver: SliverFillRemaining(
+                  child: RefreshIndicator(
+                    onRefresh: () {},
+                    child: TabBarView(
+                      children: <Widget>[
+                        Store(),
+                        Social(),
+                      ],
+                    ),
                   ),
                 ),
               ),
