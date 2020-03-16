@@ -26,5 +26,5 @@ This is the Store screen.
 
 ![Screenshots](store.png)
 
-## Buy me a coffe ko-fi.com/omaryehia
-### All rights reserved O.Y.T, JavTh0n, E-Soor.
+#### Buy me a coffe ko-fi.com/omaryehia
+## All rights reserved O.Y.T, JavTh0n, E-Soor.
