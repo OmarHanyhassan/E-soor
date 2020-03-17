@@ -36,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  bottomreveal:
+    dependency: "direct main"
+    description:
+      name: bottomreveal
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   cached_network_image:
     dependency: transitive
     description:
@@ -331,6 +338,34 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.21.0"
+  shared_preferences:
+    dependency: "direct main"
+    description:
+      name: shared_preferences
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.6+3"
+  shared_preferences_macos:
+    dependency: transitive
+    description:
+      name: shared_preferences_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1+6"
+  shared_preferences_platform_interface:
+    dependency: transitive
+    description:
+      name: shared_preferences_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
+  shared_preferences_web:
+    dependency: transitive
+    description:
+      name: shared_preferences_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2+4"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -353,9 +388,11 @@ packages:
   speech_recognition:
     dependency: "direct main"
     description:
-      name: speech_recognition
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: master
+      resolved-ref: "82ccef031b7549d5fa71aae4e458a24303d77004"
+      url: "https://github.com/webeverde/speech_recognition.git"
+    source: git
     version: "0.3.0+1"
   splashscreen:
     dependency: "direct main"

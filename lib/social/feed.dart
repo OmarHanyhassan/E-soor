@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_button/flutter_reactive_button.dart';
+
 class Feed extends StatefulWidget {
   @override
   _FeedState createState() => _FeedState();
@@ -10,31 +11,32 @@ String _value = "";
 bool isChecked = false;
 String reaction;
 List<ReactiveIconDefinition> _reactions = <ReactiveIconDefinition>[
-    ReactiveIconDefinition(
-      assetIcon: 'images/like.gif',
-      code: 'like',
-    ),
-    ReactiveIconDefinition(
-      assetIcon: 'images/haha.gif',
-      code: 'haha',
-    ),
-    ReactiveIconDefinition(
-      assetIcon: 'images/love.gif',
-      code: 'love',
-    ),
-    ReactiveIconDefinition(
-      assetIcon: 'images/sad.gif',
-      code: 'sad',
-    ),
-    ReactiveIconDefinition(
-      assetIcon: 'images/wow.gif',
-      code: 'wow',
-    ),
-    ReactiveIconDefinition(
-      assetIcon: 'images/angry.gif',
-      code: 'angry',
-    ),
-  ];
+  ReactiveIconDefinition(
+    assetIcon: 'images/like.gif',
+    code: 'like',
+  ),
+  ReactiveIconDefinition(
+    assetIcon: 'images/haha.gif',
+    code: 'haha',
+  ),
+  ReactiveIconDefinition(
+    assetIcon: 'images/love.gif',
+    code: 'love',
+  ),
+  ReactiveIconDefinition(
+    assetIcon: 'images/sad.gif',
+    code: 'sad',
+  ),
+  ReactiveIconDefinition(
+    assetIcon: 'images/wow.gif',
+    code: 'wow',
+  ),
+  ReactiveIconDefinition(
+    assetIcon: 'images/angry.gif',
+    code: 'angry',
+  ),
+];
+int reacts = 0;
 
 class _FeedState extends State<Feed> {
   @override
@@ -115,7 +117,11 @@ class _FeedState extends State<Feed> {
                       textAlign: TextAlign.justify,
                     ),
                   ),
-                  Row(),
+                  Row(
+                    children: <Widget>[
+                      Text("$reacts Reaction"),
+                    ],
+                  ),
                   Flex(
                     direction: Axis.horizontal,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -126,9 +132,9 @@ class _FeedState extends State<Feed> {
                         iconPadding: 2,
                         iconWidth: 32,
                         child: Container(
-                          child: reaction == null
+                            child: reaction == null
                                 ? FlatButton(
-                                    onPressed: (){},
+                                    onPressed: () {},
                                     color: Colors.green,
                                     child: Text("React"),
                                   )
@@ -136,15 +142,16 @@ class _FeedState extends State<Feed> {
                                     'images/$reaction.png',
                                     width: 32.0,
                                     height: 32.0,
-                                  )
-                        ),
+                                  )),
                         icons: _reactions,
                         onTap: () {
                           setState(() {
                             reaction = null;
+                            reacts--;
                           });
                         },
                         onSelected: (ReactiveIconDefinition button) {
+                          reacts++;
                           setState(() {
                             reaction = button.code;
                           });
@@ -155,9 +162,7 @@ class _FeedState extends State<Feed> {
                         child: Text("Comment"),
                         color: Colors.green,
                         onPressed: () {
-                          setState(() {
-                          
-                          });
+                          setState(() {});
                         },
                       ),
                       RaisedButton(

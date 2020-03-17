@@ -67,11 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
       theme: ThemeData.dark(),
       title: "E-Soor",
       debugShowCheckedModeBanner: false,
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          primary: true,
-          /*appBar: AppBar(
+      home: Scaffold(
+        /*appBar: AppBar(
             titleSpacing: 0,
             title: FlatButton(
               onPressed: () {
@@ -104,120 +101,118 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),*/
-          drawer: SizedBox(
-            height: size.height,
-            child: Drawer(
-              child: SingleChildScrollView(
-                child: SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                    child: Column(
-                      children: <Widget>[
-                        UserAccountsDrawerHeader(
-                          accountName: Text("الءوتة المشمشية"),
-                          currentAccountPicture:
-                              Image.network('https://placekitten.com/500/500'),
-                          accountEmail: Text("@meshmeshCat123"),
-                          onDetailsPressed: () {},
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.security),
-                          title: Text("Privacy"),
-                          onTap: () {},
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.language),
-                          title: Text("Language"),
-                          onTap: () {},
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.info),
-                          title: Text("About developer"),
-                          onTap: goToAboutDev,
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.settings),
-                          title: Text("Settings"),
-                          onTap: goToSettings,
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.backspace),
-                          title: Text("Log out"),
-                          onTap: logOut,
-                        ),
-                      ],
-                    ),
+        drawer: SizedBox(
+          height: size.height,
+          child: Drawer(
+            child: SingleChildScrollView(
+              child: SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                  child: Column(
+                    children: <Widget>[
+                      UserAccountsDrawerHeader(
+                        accountName: Text(LoginPage().getNamePrefs().toString()),
+                        currentAccountPicture:
+                            Image.network('https://placekitten.com/500/500'),
+                        accountEmail: Text("@meshmeshCat123"),
+                        onDetailsPressed: () {},
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.security),
+                        title: Text("Privacy"),
+                        onTap: () {},
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.language),
+                        title: Text("Language"),
+                        onTap: () {},
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.info),
+                        title: Text("About developer"),
+                        onTap: goToAboutDev,
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.settings),
+                        title: Text("Settings"),
+                        onTap: goToSettings,
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.backspace),
+                        title: Text("Log out"),
+                        onTap: logOut,
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
-          body: CustomScrollView(
-            slivers: <Widget>[
-              SliverAppBar(
-                primary: true,
-                titleSpacing: 0,
-                title: FlatButton(
-                  onPressed: () {
-                    showSearchPage(context, AppSearch(), transcription);
-                  },
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.search,
-                        size: 25,
-                      ),
-                      Text(
-                        " Search",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                centerTitle: true,
-                actions: <Widget>[
-                  _buildVoiceInput(
-                    onPressed: _speechRecognitionAvailable && !_isListening
-                        ? () => start()
-                        : () => stop(),
-                    label: _isListening ? 'Listening...' : '',
-                  ),
-                ],
-                floating: true,
-                pinned: true,
-                bottom: TabBar(
-                  indicatorColor: Colors.white,
-                  tabs: <Widget>[
-                    Tab(
-                      text: "Store",
-                      icon: Icon(Icons.store),
-                    ),
-                    Tab(
-                      text: "Social",
-                      icon: Icon(Icons.people),
-                    )
-                  ],
-                ),
-              ),
-              SliverPadding(
-                padding: EdgeInsets.only(top: 30),
-                sliver: SliverFillRemaining(
-                  child: RefreshIndicator(
-                    onRefresh: () {},
-                    child: TabBarView(
+        ),
+        body: DefaultTabController(
+          length: 2,
+          child: NestedScrollView(
+            headerSliverBuilder: (context, value) {
+              return [
+                SliverAppBar(
+                  titleSpacing: 0,
+                  title: FlatButton(
+                    onPressed: () {
+                      showSearchPage(context, AppSearch(), transcription);
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Store(),
-                        Social(),
+                        Icon(
+                          Icons.search,
+                          size: 25,
+                        ),
+                        Text(
+                          " Search",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
                       ],
                     ),
                   ),
+                  centerTitle: true,
+                  actions: <Widget>[
+                    _buildVoiceInput(
+                      onPressed: _speechRecognitionAvailable && !_isListening
+                          ? () => start()
+                          : () => stop(),
+                      label: _isListening ? 'Listening...' : '',
+                    ),
+                  ],
+                  floating: true,
+                  pinned: true,
+                  bottom: TabBar(
+                    indicatorColor: Colors.white,
+                    tabs: <Widget>[
+                      Tab(
+                        text: "Store",
+                        icon: Icon(Icons.store),
+                      ),
+                      Tab(
+                        text: "Social",
+                        icon: Icon(Icons.people),
+                      )
+                    ],
+                  ),
                 ),
+              ];
+            },
+            body: RefreshIndicator(
+              onRefresh: () {},
+              child: TabBarView(
+                children: <Widget>[
+                  Store(),
+                  Social(),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -255,11 +250,12 @@ class _MyHomePageState extends State<MyHomePage> {
 // ignore: must_call_super
   void initState() {
     activateSpeechRecognizer();
+    super.initState();
   }
 
   Widget _buildVoiceInput({String label, VoidCallback onPressed}) =>
       new Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(2),
         child: IconButton(
           icon: Icon(Icons.mic),
           onPressed: onPressed,
@@ -315,7 +311,9 @@ class _MyHomePageState extends State<MyHomePage> {
         stop();
       });
 
-  void onRecognitionComplete() => setState(() => _isListening = false);
+  void onRecognitionComplete(result) => setState(() {
+    _isListening = false;
+  });
 }
 
 class AppSearch extends SearchDelegate<String> {
