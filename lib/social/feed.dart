@@ -117,11 +117,6 @@ class _FeedState extends State<Feed> {
                       textAlign: TextAlign.justify,
                     ),
                   ),
-                  Row(
-                    children: <Widget>[
-                      Text("$reacts Reaction"),
-                    ],
-                  ),
                   Flex(
                     direction: Axis.horizontal,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -147,13 +142,18 @@ class _FeedState extends State<Feed> {
                         onTap: () {
                           setState(() {
                             reaction = null;
-                            reacts--;
+                            if (reacts > 1) {
+                              reacts = 0;
+                            } else {
+                              reacts--;
+                            }
                           });
                         },
                         onSelected: (ReactiveIconDefinition button) {
-                          reacts++;
                           setState(() {
+                            reacts++;
                             reaction = button.code;
+                            
                           });
                         },
                       ),
