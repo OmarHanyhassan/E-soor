@@ -34,40 +34,43 @@ class _SocialState extends State<Social> {
 
 	@override
 	Widget build(BuildContext context) {
-		return Scaffold(
-			body: _children[_selectedIndex],
-			bottomNavigationBar: BottomNavigationBar(
-				currentIndex: _selectedIndex,
-				onTap: nav,
-				selectedItemColor: Colors.green,
-				items: <BottomNavigationBarItem>[
-					// Feed Icon
-					BottomNavigationBarItem(
-						title: Text("Feed"),
-						icon: Icon(Icons.home),
-					),
-					// Network Icon
-					BottomNavigationBarItem(
-						title: Text("Network"),
-						icon: Icon(Icons.group),
-					),
-					// Add Friends Icon
-					BottomNavigationBarItem(
-						title: Text("Friend Requests"),
-						icon: Icon(Icons.person_add),
-					),
-					// Chats Icon
-					BottomNavigationBarItem(
-						title: Text("Chats"),
-						icon: Icon(Icons.chat),
-					),
-					// Settings Icon
-					BottomNavigationBarItem(
-						title: Text("Profile"),
-						icon: Icon(Icons.person),
-					),
-				],
-			),
+		return RefreshIndicator(
+      onRefresh: (){},
+          child: Scaffold(
+		  	body: _children[_selectedIndex],
+		  	bottomNavigationBar: BottomNavigationBar(
+		  		currentIndex: _selectedIndex,
+		  		onTap: nav,
+		  		selectedItemColor: Colors.green,
+		  		items: <BottomNavigationBarItem>[
+		  			// Feed Icon
+		  			BottomNavigationBarItem(
+		  				title: Text("Feed"),
+		  				icon: Icon(Icons.home),
+		  			),
+		  			// Network Icon
+		  			BottomNavigationBarItem(
+		  				title: Text("Network"),
+		  				icon: Icon(Icons.group),
+		  			),
+		  			// Add Friends Icon
+		  			BottomNavigationBarItem(
+		  				title: Text("Friend Requests"),
+		  				icon: Icon(Icons.person_add),
+		  			),
+		  			// Chats Icon
+		  			BottomNavigationBarItem(
+		  				title: Text("Chats"),
+		  				icon: Icon(Icons.chat),
+		  			),
+		  			// Settings Icon
+		  			BottomNavigationBarItem(
+		  				title: Text("Profile"),
+		  				icon: Icon(Icons.person),
+		  			),
+		  		],
+		  	),
+		  ),
 		);
 	}
 

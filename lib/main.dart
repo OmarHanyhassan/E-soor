@@ -52,6 +52,8 @@ class _MyHomePageState extends State<MyHomePage>
   double screenHeight, screenWidth;
   AnimationController animationController;
   Animation<double> _scaleAnimation;
+  Animation<double> _drawerScaleAnimation;
+  Animation<Offset> _slideAnimation;
 
   @override
   void initState() {
@@ -59,8 +61,14 @@ class _MyHomePageState extends State<MyHomePage>
     animationController = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(
       begin: 1,
-      end: 0.6,
+      end: 0.7,
     ).animate(animationController);
+    _drawerScaleAnimation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(animationController);
+    _slideAnimation = Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0))
+        .animate(animationController);
     activateSpeechRecognizer();
   }
 
@@ -98,47 +106,86 @@ class _MyHomePageState extends State<MyHomePage>
 
   Widget hiddenDrawer(context) {
     return Container(
-      color: Colors.black45,
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text(LoginPage().getNamePrefs().toString()),
-              currentAccountPicture:
-                  Image.network('https://placekitten.com/500/500'),
-              accountEmail: Text("@meshmeshCat123"),
-              onDetailsPressed: () {},
+      color: Color.fromRGBO(17, 17, 17, 100),
+      child: SlideTransition(
+        position: _slideAnimation,
+        child: ScaleTransition(
+          scale: _drawerScaleAnimation,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(
+                    height: 0.22 * screenHeight,
+                    width: 0.22 * screenHeight,
+                    child: Card(
+                        elevation: 5,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Image.network(
+                                  'https://placekitten.com/200/200',
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(0),
+                              child: Text(
+                                "Account Name",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                "@meshmeshCat123",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.security),
+                    title: Text("Privacy"),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.language),
+                    title: Text("Language"),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.info),
+                    title: Text("About developer"),
+                    onTap: goToAboutDev,
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text("Settings"),
+                    onTap: goToSettings,
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.backspace),
+                    title: Text("Log out"),
+                    onTap: logOut,
+                  ),
+                ],
+              ),
             ),
-            ListTile(
-              leading: Icon(Icons.security),
-              title: Text("Privacy"),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.language),
-              title: Text("Language"),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text("About developer"),
-              onTap: goToAboutDev,
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
-              onTap: goToSettings,
-            ),
-            ListTile(
-              leading: Icon(Icons.backspace),
-              title: Text("Log out"),
-              onTap: logOut,
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -225,15 +272,12 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ];
               },
-              body: RefreshIndicator(
-                onRefresh: () {},
-                child: TabBarView(
+              body: TabBarView(
                   children: <Widget>[
                     Store(),
                     Social(),
                   ],
                 ),
-              ),
             ),
           ),
         ),

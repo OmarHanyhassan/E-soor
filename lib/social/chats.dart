@@ -1,3 +1,4 @@
+import 'package:E_Soor/services/message_model.dart';
 import 'package:flutter/material.dart';
 import 'package:bottomreveal/bottomreveal.dart';
 
@@ -8,10 +9,13 @@ class Chats extends StatefulWidget {
 
 class _ChatsState extends State<Chats> {
   final BottomRevealController _menuController = BottomRevealController();
+  static DateTime dateTime = new DateTime.now().toLocal();
+  String time = "${dateTime.hour}:${dateTime.minute}";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BottomReveal(
+        frontColor: Colors.blue,
         openIcon: Icons.message,
         closeIcon: Icons.message,
         revealWidth: 150,
@@ -29,7 +33,7 @@ class _ChatsState extends State<Chats> {
                       backgroundColor: Colors.orange[400],
                     ),
                     SizedBox.fromSize(
-                      size: MediaQuery.of(context).size/100,
+                      size: MediaQuery.of(context).size / 100,
                     ),
                     Text("Name"),
                   ],
@@ -45,6 +49,7 @@ class _ChatsState extends State<Chats> {
         ),
         bottomContent: TextFormField(
           decoration: InputDecoration(
+            suffixIcon: Icon(Icons.search),
             hintText: "Search your chats..",
             filled: true,
             fillColor: Colors.grey,
@@ -57,14 +62,39 @@ class _ChatsState extends State<Chats> {
           ),
         ),
         controller: _menuController,
-        body: ListView.builder(
-          padding: const EdgeInsets.all(16.0),
-          itemBuilder: (_, index) => Card(
-            child: ListTile(
-              title: Text("Chat No.$index"),
-              subtitle: Text("Consider as message"),
+        body: Flex(
+          direction: Axis.vertical,
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                child: ListView.builder(
+                  itemCount: chats.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final Message chat = chats[index];
+                    return Row(
+                      children: <Widget>[
+                        CircleAvatar(
+                          radius: 35.0,
+                          backgroundImage:
+                              NetworkImage(chat.sender.profileImage),
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              chat.sender.username,
+                            ),
+                            Text(
+                              chat.text,
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
