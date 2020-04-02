@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     children: <Widget>[
                       UserAccountsDrawerHeader(
-                        accountName: Text(LoginPage().getNamePrefs().toString()),
+                        accountName: Text("Testttttt"),//LoginPage().getNamePrefs().toString()),
                         currentAccountPicture:
                             Image.network('https://placekitten.com/500/500'),
                         accountEmail: Text("@meshmeshCat123"),
