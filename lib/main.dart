@@ -106,7 +106,6 @@ class _MyHomePageState extends State<MyHomePage>
 
   Widget hiddenDrawer(context) {
     return Container(
-<<<<<<< HEAD
       color: Color.fromRGBO(17, 17, 17, 100),
       child: SlideTransition(
         position: _slideAnimation,
@@ -185,105 +184,6 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ],
               ),
-=======
-      color: Colors.black45,
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text(LoginPage().getNamePrefs().toString()),
-              currentAccountPicture:
-                  Image.network('https://placekitten.com/500/500'),
-              accountEmail: Text("@meshmeshCat123"),
-              onDetailsPressed: () {},
-            ),
-
-            centerTitle: true,
-            actions: <Widget>[
-              _buildVoiceInput(
-                onPressed: _speechRecognitionAvailable && !_isListening
-                    ? () => start()
-                    : () => stop(),
-                label: _isListening ? 'Listening...' : '',
-              ),
-            ],
-          ),*/
-        drawer: SizedBox(
-          height: size.height,
-          child: Drawer(
-            child: SingleChildScrollView(
-              child: SafeArea(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      UserAccountsDrawerHeader(
-                        accountName: Text("Testttttt"),//LoginPage().getNamePrefs().toString()),
-                        currentAccountPicture:
-                            Image.network('https://placekitten.com/500/500'),
-                        accountEmail: Text("@meshmeshCat123"),
-                        onDetailsPressed: () {},
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.security),
-                        title: Text("Privacy"),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.language),
-                        title: Text("Language"),
-                        onTap: () {},
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.info),
-                        title: Text("About developer"),
-                        onTap: goToAboutDev,
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.settings),
-                        title: Text("Settings"),
-                        onTap: goToSettings,
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.backspace),
-                        title: Text("Log out"),
-                        onTap: logOut,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-            ListTile(
-              leading: Icon(Icons.security),
-              title: Text("Privacy"),
-              onTap: () {},
-
-            ),
-            ListTile(
-              leading: Icon(Icons.language),
-              title: Text("Language"),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text("About developer"),
-              onTap: goToAboutDev,
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
-              onTap: goToSettings,
-            ),
-            ListTile(
-              leading: Icon(Icons.backspace),
-              title: Text("Log out"),
-              onTap: logOut,
->>>>>>> 3f1cec3d40d87c0f10370cbefdeb99be2970d781
             ),
           ),
         ),
