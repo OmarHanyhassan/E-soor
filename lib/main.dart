@@ -1,5 +1,4 @@
 import 'package:E_Soor/other/about_dev.dart';
-import 'package:E_Soor/login_signup_reset/login.dart';
 import 'package:E_Soor/other/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ import 'package:E_Soor/tabs/social.dart';
 import 'package:E_Soor/tabs/store.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:E_Soor/services/auth.dart';
 
 void main() => runApp(MyApp());
 
@@ -47,6 +47,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
+  final AuthService _auth = AuthService();
   Duration duration = Duration(milliseconds: 300);
   bool isCollapsed = true;
   double screenHeight, screenWidth;
@@ -180,7 +181,8 @@ class _MyHomePageState extends State<MyHomePage>
                   ListTile(
                     leading: Icon(Icons.backspace),
                     title: Text("Log out"),
-                    onTap: logOut,
+                    // TODO: Implement SignOut
+                    onTap: _auth.logOut,
                   ),
                 ],
               ),
@@ -299,15 +301,6 @@ class _MyHomePageState extends State<MyHomePage>
       context,
       MaterialPageRoute(
         builder: (context) => AboutDev(),
-      ),
-    );
-  }
-
-  void logOut() {
-    Navigator.pop(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LoginPage(),
       ),
     );
   }
