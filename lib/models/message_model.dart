@@ -83,14 +83,14 @@ List<Message> chats = [
   ),
   Message(
     sender: harry,
-    text: 'What about wandring this evening?',
+    text: 'What about wandring this evening? another bla bla bl',
     time: '10:02 AM',
     isLiked: false,
     isRead: false,
   ),
   Message(
     sender: lily,
-    text: 'wanna hear ma new song?',
+    text: 'Wanna hear ma new song?',
     time: '3:40 AM',
     isLiked: false,
     isRead: false,
@@ -107,7 +107,7 @@ List<Message> chats = [
     text: 'I wanna play tonight ;D',
     time: '11:43 PM',
     isLiked: true,
-    isRead: true,
+    isRead: false,
   ),
 ];
 List<Message> messages = [

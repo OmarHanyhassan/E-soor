@@ -1,15 +1,15 @@
 import 'package:E_Soor/other/about_dev.dart';
-import 'package:E_Soor/other/splash_screen.dart';
+import 'package:E_Soor/ui/screens/splash_screen/splash_screen.dart';
+import 'package:E_Soor/ui/screens/tabs/social.dart';
+import 'package:E_Soor/ui/screens/tabs/store.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:E_Soor/settings.dart';
-import 'package:E_Soor/tabs/social.dart';
-import 'package:E_Soor/tabs/store.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:E_Soor/services/auth.dart';
+import 'models/auth.dart';
 
 void main() => runApp(MyApp());
 
@@ -181,7 +181,6 @@ class _MyHomePageState extends State<MyHomePage>
                   ListTile(
                     leading: Icon(Icons.backspace),
                     title: Text("Log out"),
-                    // TODO: Implement SignOut
                     onTap: _auth.logOut,
                   ),
                 ],
@@ -275,11 +274,11 @@ class _MyHomePageState extends State<MyHomePage>
                 ];
               },
               body: TabBarView(
-                  children: <Widget>[
-                    Store(),
-                    Social(),
-                  ],
-                ),
+                children: <Widget>[
+                  Store(),
+                  Social(),
+                ],
+              ),
             ),
           ),
         ),

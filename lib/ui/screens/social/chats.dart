@@ -1,4 +1,4 @@
-import 'package:E_Soor/services/message_model.dart';
+import 'package:E_Soor/ui/widgets/RecentChats.dart';
 import 'package:flutter/material.dart';
 import 'package:bottomreveal/bottomreveal.dart';
 
@@ -15,9 +15,9 @@ class _ChatsState extends State<Chats> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BottomReveal(
-        frontColor: Colors.blue,
+        frontColor: Colors.grey[800],
         openIcon: Icons.message,
-        closeIcon: Icons.message,
+        closeIcon: null,
         revealWidth: 150,
         revealHeight: 100,
         backColor: Colors.grey.shade900,
@@ -62,40 +62,7 @@ class _ChatsState extends State<Chats> {
           ),
         ),
         controller: _menuController,
-        body: Flex(
-          direction: Axis.vertical,
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                child: ListView.builder(
-                  itemCount: chats.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final Message chat = chats[index];
-                    return Row(
-                      children: <Widget>[
-                        CircleAvatar(
-                          radius: 35.0,
-                          backgroundImage:
-                              NetworkImage(chat.sender.profileImage),
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Text(
-                              chat.sender.username,
-                            ),
-                            Text(
-                              chat.text,
-                            ),
-                          ],
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
+        body: RecentChats(),
       ),
     );
   }

@@ -1,11 +1,10 @@
+import 'package:E_Soor/helpers/ui/placeholder_widget.dart';
+import 'package:E_Soor/ui/screens/social/chats.dart';
+import 'package:E_Soor/ui/screens/social/feed.dart';
+import 'package:E_Soor/ui/screens/social/friend_requests.dart';
+import 'package:E_Soor/ui/screens/social/network.dart';
+import 'package:E_Soor/ui/screens/social/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:E_Soor/help/placeholder_widget.dart';
-import 'package:E_Soor/social/feed.dart';
-import 'package:E_Soor/social/chats.dart';
-import 'package:E_Soor/social/friend_requests.dart';
-import 'package:E_Soor/social/network.dart';
-import 'package:E_Soor/social/profile.dart';
-
 class Social extends StatefulWidget {
 	@override
 	_SocialState createState() => _SocialState();

@@ -1,6 +1,6 @@
-import 'package:E_Soor/store/category.dart';
+import 'package:E_Soor/ui/screens/store/book_page.dart';
+import 'package:E_Soor/ui/screens/store/category.dart';
 import 'package:flutter/material.dart';
-import '../store/book_page.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
