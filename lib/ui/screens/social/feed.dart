@@ -12,27 +12,27 @@ bool isChecked = false;
 String reaction;
 List<ReactiveIconDefinition> _reactions = <ReactiveIconDefinition>[
   ReactiveIconDefinition(
-    assetIcon: 'images/like.gif',
+    assetIcon: 'allAssets/images/like.gif',
     code: 'like',
   ),
   ReactiveIconDefinition(
-    assetIcon: 'images/haha.gif',
+    assetIcon: 'allAssets/images/haha.gif',
     code: 'haha',
   ),
   ReactiveIconDefinition(
-    assetIcon: 'images/love.gif',
+    assetIcon: 'allAssets/images/love.gif',
     code: 'love',
   ),
   ReactiveIconDefinition(
-    assetIcon: 'images/sad.gif',
+    assetIcon: 'allAssets/images/sad.gif',
     code: 'sad',
   ),
   ReactiveIconDefinition(
-    assetIcon: 'images/wow.gif',
+    assetIcon: 'allAssets/images/wow.gif',
     code: 'wow',
   ),
   ReactiveIconDefinition(
-    assetIcon: 'images/angry.gif',
+    assetIcon: 'allAssets/images/angry.gif',
     code: 'angry',
   ),
 ];
@@ -134,7 +134,7 @@ class _FeedState extends State<Feed> {
                                     child: Text("React"),
                                   )
                                 : Image.asset(
-                                    'images/$reaction.png',
+                                    'allAssets/images/$reaction.png',
                                     width: 32.0,
                                     height: 32.0,
                                   )),

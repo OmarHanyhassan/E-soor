@@ -18,7 +18,7 @@ class AboutDev extends StatelessWidget {
 						children: <Widget>[
 							CircleAvatar(
 								maxRadius: 100,
-								backgroundImage: ExactAssetImage("images/mmm.jpg"),
+								backgroundImage: ExactAssetImage("allAssets/images/mmm.jpg"),
 							),
 							Padding(
 								padding: EdgeInsets.all(10),
