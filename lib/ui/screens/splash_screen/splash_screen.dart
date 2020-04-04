@@ -1,3 +1,5 @@
+import 'package:E_Soor/main.dart';
+import 'package:E_Soor/models/auth.dart';
 import 'package:E_Soor/ui/screens/login_signup_reset/login.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -17,28 +19,15 @@ class MySplashScreen extends StatefulWidget {
 }
 
 class _MySplashScreenState extends State<MySplashScreen> {
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
       photoSize: 200,
-      /*gradientBackground: LinearGradient(
-				begin: Alignment.topLeft,
-				end: Alignment.bottomRight,
-				colors: <Color>[
-					Colors.black12,
-					Colors.blue,
-					Colors.blueGrey
-				],
-				stops: [
-					0.3,
-					0.6,
-					1,
-				],
-			),*/
       backgroundColor: Color.fromRGBO(35, 35, 35, 100),
       seconds: 5,
-      navigateAfterSeconds: LoginPage(),
-      image: Image.asset("images/logo.png"),
+      navigateAfterSeconds: _auth.isLoggedIn() ? MyHomePage() : LoginPage(),
+      image: Image.asset("assets/images/logo.png"),
       loaderColor: Colors.white,
       loadingText: Text(
         "Loading",

@@ -4,11 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final Firestore _firestore = Firestore.instance;
-
   String _email, _password;
+  bool _isLoggedIn = false;
 
   Future<String> registerUser(data) async {
     print(data);
+    _isLoggedIn = true;
     _password = data.password;
     _email = data.name;
     await _auth.createUserWithEmailAndPassword(
@@ -24,17 +25,28 @@ class AuthService {
     print(data);
     _password = data.password;
     _email = data.name;
+    _isLoggedIn = true;
     await _auth.signInWithEmailAndPassword(email: _email, password: _password);
     return null;
   }
 
   Future<String> recoverPassword(String email) async {
+    _isLoggedIn = false;
     await _auth.sendPasswordResetEmail(email: email);
     return null;
   }
 
   Future<void> logOut() async {
+    _isLoggedIn = false;
     await _auth.signOut();
     return null;
+  }
+
+  bool isLoggedIn() {
+    if (_isLoggedIn == true) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
