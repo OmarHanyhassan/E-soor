@@ -26,7 +26,7 @@ class _RecentChatsState extends State<RecentChats> {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
-                      color: chat.isRead ? null : Colors.green[600],
+                      color: chat.isRead ? null : Colors.blue[700],
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 5,
