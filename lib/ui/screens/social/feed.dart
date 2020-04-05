@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_button/flutter_reactive_button.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 class Feed extends StatefulWidget {
   @override
   _FeedState createState() => _FeedState();
 }
 
+AudioCache audioPlayer = AudioCache(prefix: 'sounds/');
 String _value = "";
 bool isChecked = false;
 String reaction;
@@ -127,34 +129,47 @@ class _FeedState extends State<Feed> {
                         iconPadding: 2,
                         iconWidth: 32,
                         child: Container(
-                            child: reaction == null
-                                ? FlatButton(
-                                    onPressed: () {},
-                                    color: Colors.green,
-                                    child: Text("React"),
-                                  )
-                                : Image.asset(
-                                    'allAssets/images/$reaction.png',
-                                    width: 32.0,
-                                    height: 32.0,
-                                  )),
+                          child: reaction != null
+                              ? Image.asset(
+                                  'allAssets/images/$reaction.png',
+                                  width: 32.0,
+                                  height: 32.0,
+                                )
+                              : FlatButton(
+                                  onPressed: () {},
+                                  color: Colors.green,
+                                  child: Text("React"),
+                                ),
+                        ),
                         icons: _reactions,
                         onTap: () {
-                          setState(() {
-                            reaction = null;
-                            if (reacts > 1) {
-                              reacts = 0;
-                            } else {
-                              reacts--;
-                            }
-                          });
+                          audioPlayer.loadAll(
+                            [
+                              'short_press_like.mp3',
+                              'icon_choose.mp3',
+                              'box_up.mp3',
+                            ],
+                          );
+                          setState(
+                            () {
+                              audioPlayer.play('short_press_like.mp3');
+                              if (reaction == null) {
+                                reaction = 'like';
+                              } else {
+                                reaction = null;
+                              }
+                            },
+                          );
                         },
                         onSelected: (ReactiveIconDefinition button) {
-                          setState(() {
-                            reacts++;
-                            reaction = button.code;
-                            
-                          });
+                          setState(
+                            () {
+                              audioPlayer.play('box_up.mp3');
+                              reacts++;
+                              reaction = button.code;
+                              audioPlayer.play('icon_choose.mp3');
+                            },
+                          );
                         },
                       ),
                       RaisedButton(

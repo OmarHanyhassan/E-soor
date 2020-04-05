@@ -1,4 +1,4 @@
-import 'package:E_Soor/other/about_dev.dart';
+import 'package:E_Soor/ui/screens/other/about_dev.dart';
 import 'package:E_Soor/ui/screens/settings.dart';
 import 'package:E_Soor/ui/screens/splash_screen/splash_screen.dart';
 import 'package:E_Soor/ui/screens/tabs/social.dart';
