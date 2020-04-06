@@ -1,3 +1,4 @@
+import 'package:E_Soor/ui/widgets/AppSearch.dart';
 import 'package:E_Soor/ui/widgets/RecentChats.dart';
 import 'package:flutter/material.dart';
 import 'package:bottomreveal/bottomreveal.dart';
@@ -18,7 +19,7 @@ class _ChatsState extends State<Chats> {
         frontColor: Colors.grey[800],
         openIcon: Icons.message,
         closeIcon: null,
-        revealWidth: 150,
+        revealWidth: 100,
         revealHeight: 100,
         backColor: Colors.grey.shade900,
         rightContent: ListView.separated(
@@ -35,7 +36,7 @@ class _ChatsState extends State<Chats> {
                     SizedBox.fromSize(
                       size: MediaQuery.of(context).size / 100,
                     ),
-                    Text("Name"),
+                    Text("Name $index"),
                   ],
                 ),
               ),
@@ -60,6 +61,9 @@ class _ChatsState extends State<Chats> {
               borderRadius: BorderRadius.circular(30.0),
             ),
           ),
+          onFieldSubmitted: (query) {
+            showSearch(context: context, delegate: AppSearch(), query: query);
+          },
         ),
         controller: _menuController,
         body: RecentChats(),

@@ -43,7 +43,7 @@ class _RecentChatsState extends State<RecentChats> {
                                   NetworkImage(chat.sender.profileImage),
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.height * 0.015,
+                              width: MediaQuery.of(context).size.width * 0.02,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +61,7 @@ class _RecentChatsState extends State<RecentChats> {
                                 ),
                                 SizedBox(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.6,
+                                      MediaQuery.of(context).size.width * 0.55,
                                   child: Text(
                                     chat.text,
                                     overflow: TextOverflow.ellipsis,
@@ -98,8 +98,8 @@ class _RecentChatsState extends State<RecentChats> {
                                   : Container(
                                       alignment: Alignment.center,
                                       width:
-                                          MediaQuery.of(context).size.height *
-                                              0.067,
+                                          MediaQuery.of(context).size.width *
+                                              0.125,
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.03,

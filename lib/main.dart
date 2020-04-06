@@ -3,6 +3,7 @@ import 'package:E_Soor/ui/screens/settings.dart';
 import 'package:E_Soor/ui/screens/splash_screen/splash_screen.dart';
 import 'package:E_Soor/ui/screens/tabs/social.dart';
 import 'package:E_Soor/ui/screens/tabs/store.dart';
+import 'package:E_Soor/ui/widgets/AppSearch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -21,7 +22,6 @@ class MyApp extends StatelessWidget {
       title: 'E-Soor',
       theme: ThemeData.dark(),
       home: MySplashScreen(),
-      //home: Feed(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -364,91 +364,4 @@ class _MyHomePageState extends State<MyHomePage>
   void onRecognitionComplete(result) => setState(() {
         _isListening = false;
       });
-}
-
-class AppSearch extends SearchDelegate<String> {
-  @override
-  TextInputType get keyboardType => TextInputType.text;
-
-  final items = List<String>.generate(100, (i) => "Item $i");
-
-  final recentItems = List<String>.generate(31, (i) => "Item $i");
-
-  @override
-  ThemeData appBarTheme(BuildContext context) {
-    return ThemeData.dark();
-  }
-
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () {
-          query = "";
-        },
-      ),
-      IconButton(
-        icon: Icon(Icons.mic),
-        onPressed: () {},
-      ),
-    ];
-  }
-
-  String p;
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.menu_arrow,
-        progress: transitionAnimation,
-      ),
-      onPressed: () {
-        close(context, null);
-      },
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return null;
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    final suggestionList = query.isEmpty
-        ? recentItems
-        : items
-            .where((p) => p.toLowerCase().contains(query.toLowerCase()))
-            .toList();
-    return ListView.builder(
-      itemBuilder: (context, index) => ListTile(
-        onTap: () {
-          showResults(context);
-        },
-        leading: Icon(Icons.book),
-        title: RichText(
-          text: TextSpan(
-            text: suggestionList[index],
-            style: TextStyle(
-              color: Colors.orange[300],
-            ),
-          ),
-        ),
-      ),
-      itemCount: suggestionList.length,
-    );
-  }
-}
-
-void showSearchPage(
-    BuildContext context, SearchDelegate search, String transcription) async {
-  final String selected = await showSearch(
-      context: context, delegate: search, query: transcription);
-
-  if (selected != null) {
-    Scaffold.of(context).showSnackBar(SnackBar(
-      content: Text("You chose this"),
-    ));
-  }
 }
