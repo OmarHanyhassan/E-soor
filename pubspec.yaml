@@ -27,10 +27,7 @@ dependencies:
   bottomreveal: ^1.0.0
   flutter_rating_bar: 
   circular_profile_avatar: 
-  speech_recognition:
-    git:
-        url: https://github.com/webeverde/speech_recognition.git
-        ref: master
+  speech_recognition: "^0.3.0"
   permission_handler: ^3.2.0
   login: any
   googleapis: any

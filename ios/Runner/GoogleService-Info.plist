@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>604969794369-14nrhvj8j0oo329krb7m2i45blrn5nbj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.604969794369-14nrhvj8j0oo329krb7m2i45blrn5nbj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDIHfwKe0H8_s5V7tM8i4azBTvpm07KNhQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>604969794369</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.eSoor.eSoor</string>
+	<key>PROJECT_ID</key>
+	<string>e-soor-29d6c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>e-soor-29d6c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:604969794369:ios:fad0fa755eb25deaa9bfc0</string>
+	<key>DATABASE_URL</key>
+	<string>https://e-soor-29d6c.firebaseio.com</string>
+</dict>
+</plist>
