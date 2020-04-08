@@ -31,13 +31,13 @@ class _SocialState extends State<Social> {
 		),
 	];
 
-  _onRefresh(){
+  /*_onRefresh(){
 
-  }
+  }*/
 	@override
 	Widget build(BuildContext context) {
 		return RefreshIndicator(
-      onRefresh: _onRefresh,
+      onRefresh: (){},
           child: Scaffold(
 		  	body: _children[_selectedIndex],
 		  	bottomNavigationBar: BottomNavigationBar(

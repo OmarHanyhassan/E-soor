@@ -15,13 +15,13 @@ class _StoreState extends State<Store> {
   int total = 2 * price;
   
 
-  _onRefresh(){
+  /*_onRefresh(){
 
-  }
+  }*/
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: _onRefresh,
+      onRefresh: () {},
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,

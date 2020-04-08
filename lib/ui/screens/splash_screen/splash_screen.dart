@@ -26,7 +26,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
       photoSize: 200,
       backgroundColor: Color.fromRGBO(35, 35, 35, 100),
       seconds: 5,
-      navigateAfterSeconds: _auth.isLoggedIn() ? MyHomePage() : LoginPage(),
+      navigateAfterSeconds: _auth.isLoggedIn(),
       image: Image.asset("allAssets/images/logo.png"),
       loaderColor: Colors.white,
       loadingText: Text(
