@@ -9,7 +9,6 @@ class AuthService {
 
   Future<String> registerUser(data) async {
     print(data);
-    _isLoggedIn = true;
     _password = data.password;
     _email = data.name;
     await _auth.createUserWithEmailAndPassword(
@@ -18,6 +17,7 @@ class AuthService {
       'user': _email,
       'pass': _password,
     });
+    _isLoggedIn = true;
     return null;
   }
 
@@ -25,8 +25,13 @@ class AuthService {
     print(data);
     _password = data.password;
     _email = data.name;
+    try{
+      await _auth.signInWithEmailAndPassword(email: _email, password: _password);
+    }
+    catch(err){
+      return null;
+    }
     _isLoggedIn = true;
-    await _auth.signInWithEmailAndPassword(email: _email, password: _password);
     return null;
   }
 

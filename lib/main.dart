@@ -12,6 +12,8 @@ import 'package:speech_recognition/speech_recognition.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'models/auth.dart';
 
+//flutter build ios && tar -zcf build/app.ipa build/ios/iphoneos/Runner.app && ls -lh build/app.ipa
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -361,7 +363,7 @@ class _MyHomePageState extends State<MyHomePage>
         stop();
       });
 
-  void onRecognitionComplete(result) => setState(() {
+  void onRecognitionComplete() => setState(() {
         _isListening = false;
       });
 }

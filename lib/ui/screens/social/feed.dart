@@ -9,7 +9,6 @@ class Feed extends StatefulWidget {
 }
 
 AudioCache audioPlayer = AudioCache(prefix: 'sounds/');
-String _value = "";
 bool isChecked = false;
 String reaction;
 List<ReactiveIconDefinition> _reactions = <ReactiveIconDefinition>[
@@ -173,7 +172,6 @@ class _FeedState extends State<Feed> {
                         },
                       ),
                       RaisedButton(
-                        // TODO: Implement commenting function.
                         child: Text("Comment"),
                         color: Colors.green,
                         onPressed: () {
@@ -181,7 +179,6 @@ class _FeedState extends State<Feed> {
                         },
                       ),
                       RaisedButton(
-                        // TODO: Implement sharing function.
                         onPressed: () {},
                         child: Text("Share"),
                         color: Colors.green,
