@@ -8,8 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:speech_recognition/speech_recognition.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'models/auth.dart';
 
 //flutter build ios && tar -zcf build/app.ipa build/ios/iphoneos/Runner.app && ls -lh build/app.ipa
@@ -71,9 +69,7 @@ class _MyHomePageState extends State<MyHomePage>
       end: 1,
     ).animate(animationController);
     _slideAnimation = Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0))
-        .animate(animationController);
-    activateSpeechRecognizer();
-  }
+        .animate(animationController);  }
 
   @override
   void dispose() {
@@ -81,9 +77,6 @@ class _MyHomePageState extends State<MyHomePage>
     super.dispose();
   }
 
-  SpeechRecognition speechRecognition;
-  bool _speechRecognitionAvailable = false;
-  bool _isListening = false;
   String transcription = "";
 
   @override
@@ -249,14 +242,6 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     ),
                     centerTitle: true,
-                    actions: <Widget>[
-                      _buildVoiceInput(
-                        onPressed: _speechRecognitionAvailable && !_isListening
-                            ? () => start()
-                            : () => stop(),
-                        label: _isListening ? 'Listening...' : '',
-                      ),
-                    ],
                     floating: true,
                     pinned: true,
                     bottom: TabBar(
@@ -305,65 +290,4 @@ class _MyHomePageState extends State<MyHomePage>
       ),
     );
   }
-
-  Widget _buildVoiceInput({String label, Function onPressed}) => new Padding(
-        padding: const EdgeInsets.all(2),
-        child: IconButton(
-          icon: Icon(Icons.mic),
-          onPressed: onPressed,
-        ),
-      );
-
-  void requestPermission() async {
-    PermissionStatus permissionStatus = await PermissionHandler()
-        .checkPermissionStatus(PermissionGroup.microphone);
-    if (permissionStatus != PermissionStatus.granted) {
-      await PermissionHandler()
-          .requestPermissions([PermissionGroup.microphone]);
-    }
-  }
-
-  void activateSpeechRecognizer() {
-    requestPermission();
-
-    speechRecognition = new SpeechRecognition();
-    speechRecognition.setAvailabilityHandler(onSpeechAvailability);
-    speechRecognition.setCurrentLocaleHandler(onCurrentLocale);
-    speechRecognition.setRecognitionStartedHandler(onRecognitionStarted);
-    speechRecognition.setRecognitionResultHandler(onRecognitionResult);
-    speechRecognition.setRecognitionCompleteHandler(onRecognitionComplete);
-    speechRecognition
-        .activate()
-        .then((res) => setState(() => _speechRecognitionAvailable = res));
-  }
-
-  void start() => speechRecognition
-      .listen(locale: 'en_US')
-      .then((result) => print("Started listening => result $result"));
-
-  void cancel() => speechRecognition
-      .cancel()
-      .then((result) => setState(() => _isListening = result));
-
-  void stop() => speechRecognition
-      .stop()
-      .then((result) => setState(() => _isListening = result));
-
-  void onSpeechAvailability(bool result) =>
-      setState(() => _speechRecognitionAvailable = result);
-
-  void onCurrentLocale(String locale) =>
-      setState(() => print("current locale: $locale"));
-
-  void onRecognitionStarted() => setState(() => _isListening = true);
-
-  void onRecognitionResult(String text) => setState(() {
-        transcription = text;
-        showSearchPage(context, AppSearch(), transcription);
-        stop();
-      });
-
-  void onRecognitionComplete() => setState(() {
-        _isListening = false;
-      });
 }

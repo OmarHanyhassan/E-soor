@@ -22,10 +22,6 @@ class AppSearch extends SearchDelegate<String> {
           query = "";
         },
       ),
-      IconButton(
-        icon: Icon(Icons.mic),
-        onPressed: () {},
-      ),
     ];
   }
 
@@ -45,7 +41,9 @@ class AppSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return null;
+    return Container(
+      color: Colors.red,
+    );
   }
 
   @override
