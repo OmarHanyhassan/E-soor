@@ -22,6 +22,10 @@ class AppSearch extends SearchDelegate<String> {
           query = "";
         },
       ),
+      IconButton(
+        icon: Icon(Icons.filter_list),
+        onPressed: () {},
+      ),
     ];
   }
 

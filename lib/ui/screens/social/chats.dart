@@ -50,6 +50,9 @@ class _ChatsState extends State<Chats> {
         ),
         bottomContent: TextFormField(
           decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.white, width: 2),
+            ),
             suffixIcon: Icon(Icons.search),
             hintText: "Search your chats..",
             filled: true,
