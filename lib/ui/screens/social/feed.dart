@@ -9,6 +9,11 @@ class Feed extends StatefulWidget {
 }
 
 AudioCache audioPlayer = AudioCache(prefix: 'sounds/');
+const sounds = [
+  'short_press_like.mp3',
+  'icon_choose.mp3',
+  'box_up.mp3',
+];
 bool isChecked = false;
 String reaction;
 List<ReactiveIconDefinition> _reactions = <ReactiveIconDefinition>[
@@ -41,15 +46,30 @@ int reacts = 0;
 
 class _FeedState extends State<Feed> {
   @override
+  void initState() {
+    audioPlayer.loadAll(
+      sounds,
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    audioPlayer.clearCache();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.separated(
         itemBuilder: (context, position) {
           return Padding(
-            padding: EdgeInsets.fromLTRB(5, 20, 5, 20),
+            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0,),
             child: Card(
               elevation: 20,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   ListTile(
                     leading: CircleAvatar(
@@ -59,17 +79,19 @@ class _FeedState extends State<Feed> {
                     title: Text("Acc Name"),
                     subtitle: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text("Acc Type"),
                         Padding(
-                          padding: EdgeInsets.all(5),
+                          padding: EdgeInsets.only(right: 15),
+                          child:Text("Date & Time"),
                         ),
-                        Text("Date & Time"),
                       ],
                     ),
                     trailing: PopupMenuButton<int>(
                       icon: Icon(Icons.more_horiz),
                       onSelected: (value) {
+                        // TODO: Switch case for the more button
                         print("value:$value");
                       },
                       itemBuilder: (context) => [
@@ -142,13 +164,6 @@ class _FeedState extends State<Feed> {
                         ),
                         icons: _reactions,
                         onTap: () {
-                          audioPlayer.loadAll(
-                            [
-                              'short_press_like.mp3',
-                              'icon_choose.mp3',
-                              'box_up.mp3',
-                            ],
-                          );
                           setState(
                             () {
                               audioPlayer.play('short_press_like.mp3');
@@ -165,8 +180,8 @@ class _FeedState extends State<Feed> {
                             () {
                               audioPlayer.play('box_up.mp3');
                               reacts++;
-                              reaction = button.code;
                               audioPlayer.play('icon_choose.mp3');
+                              reaction = button.code;
                             },
                           );
                         },

@@ -11,6 +11,7 @@ class Chats extends StatefulWidget {
 class _ChatsState extends State<Chats> {
   final BottomRevealController _menuController = BottomRevealController();
   static DateTime dateTime = new DateTime.now().toLocal();
+  TextEditingController textController = TextEditingController();
   String time = "${dateTime.hour}:${dateTime.minute}";
   @override
   Widget build(BuildContext context) {
@@ -49,11 +50,12 @@ class _ChatsState extends State<Chats> {
           },
         ),
         bottomContent: TextFormField(
+          controller: textController,
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.white, width: 2),
             ),
-            suffixIcon: Icon(Icons.search),
+            suffixIcon: Icon(Icons.search, color: Colors.white,),
             hintText: "Search your chats..",
             filled: true,
             fillColor: Colors.grey,

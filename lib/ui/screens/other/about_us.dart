@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-class AboutDev extends StatelessWidget {
+class AboutUs extends StatelessWidget {
 	@override
 	Widget build(BuildContext context) {
 		return Scaffold(
 			appBar: AppBar(
-				title: Text("About developer"),
+				title: Text("About us"),
 				centerTitle: true,
 			),
 			body: Center(
@@ -17,7 +17,7 @@ class AboutDev extends StatelessWidget {
 						children: <Widget>[
 							CircleAvatar(
 								maxRadius: 100,
-								backgroundImage: ExactAssetImage("allAssets/images/mmm.jpg"),
+								backgroundImage: ExactAssetImage("allAssets/images/logo.png"),
 							),
 							Padding(
 								padding: EdgeInsets.all(10),

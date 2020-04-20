@@ -26,7 +26,7 @@ class User {
     );
   }
 
-  factory User.toJson(Map<String,dynamic> data) {
+  factory User.toJson(dynamic data) {
     return User(
       id: data['id'] as int,
       name: data['name'] as String,
