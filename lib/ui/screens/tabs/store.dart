@@ -1,7 +1,7 @@
 import 'package:E_Soor/ui/screens/store/book_page.dart';
 import 'package:E_Soor/ui/screens/store/category.dart';
 import 'package:E_Soor/ui/widgets/SlidingPanel.dart';
-import 'package:E_Soor/ui/widgets/categoryBar.dart';
+import 'package:E_Soor/ui/widgets/storeContent.dart';
 import 'package:flutter/material.dart';
 
 class Store extends StatefulWidget {
@@ -21,12 +21,7 @@ class _StoreState extends State<Store> {
         backgroundColor: Colors.transparent,
         body: Stack(
           children: <Widget>[
-            ListView.builder(
-              itemBuilder: (context, position) {
-                return CategoryBar(context, openBookPage, openCategoryPage);
-              },
-              itemCount: 20,
-            ),
+            StoreContent(context, openBookPage, openCategoryPage),
             Positioned(
               child: SlidingPanel(),
             ),
@@ -45,5 +40,4 @@ class _StoreState extends State<Store> {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => Category()));
   }
-  
 }

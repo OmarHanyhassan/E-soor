@@ -5,7 +5,7 @@ Widget CategoryBar(context, onTap, onViewMore) {
   return Container(
     child: Column(
       children: <Widget>[
-        // Category Row
+        // Category Header
         Padding(
           padding: const EdgeInsets.all(5.0),
           child: Row(
