@@ -20,6 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   splashscreen:
+  provider: ^4.0.5
   flutter_login: any
   sliding_up_panel: ^1.0.0
   flutter_reactive_button: ^1.1.0

@@ -4,15 +4,23 @@ import 'package:E_Soor/ui/screens/splash_screen/splash_screen.dart';
 import 'package:E_Soor/ui/screens/tabs/social.dart';
 import 'package:E_Soor/ui/screens/tabs/store.dart';
 import 'package:E_Soor/ui/widgets/AppSearch.dart';
+import 'package:E_Soor/ui/widgets/ThemeSwitch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'models/auth.dart';
+import 'package:provider/provider.dart';
+import 'package:E_Soor/models/auth.dart';
+import 'package:E_Soor/models/theme.dart';
 
 //flutter build ios && tar -zcf build/app.ipa build/ios/iphoneos/Runner.app && ls -lh build/app.ipa
 
-void main() => runApp(MyApp());
+void main() => runApp(
+      ChangeNotifierProvider<ThemeNotifier>(
+        create: (_) => ThemeNotifier(ThemeData.dark()),
+        child: MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -20,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'E-Soor',
-      theme: ThemeData.dark(),
+      theme: themeData(context),
       home: MySplashScreen(),
       debugShowCheckedModeBanner: false,
     );
@@ -29,7 +37,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-  
+
   final String title;
 
   @override
@@ -60,7 +68,8 @@ class _MyHomePageState extends State<MyHomePage>
       end: 1,
     ).animate(animationController);
     _slideAnimation = Tween<Offset>(begin: Offset(-1, 0), end: Offset(0, 0))
-        .animate(animationController);  }
+        .animate(animationController);
+  }
 
   @override
   void dispose() {
@@ -77,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage>
     screenWidth = size.width;
 
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: themeData(context),
       title: "E-Soor",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -156,8 +165,8 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                   ListTile(
                     leading: Icon(Icons.info),
-                    title: Text("About developer"),
-                    onTap: goToAboutDev,
+                    title: Text("About us"),
+                    onTap: goToAboutUs,
                   ),
                   ListTile(
                     leading: Icon(Icons.settings),
@@ -211,6 +220,9 @@ class _MyHomePageState extends State<MyHomePage>
                       },
                     ),
                     titleSpacing: 0,
+                    actions: <Widget>[
+                      ThemeSwitch()
+                    ],
                     title: FlatButton(
                       onPressed: () {
                         showSearchPage(context, AppSearch(), transcription);
@@ -273,7 +285,7 @@ class _MyHomePageState extends State<MyHomePage>
     );
   }
 
-  void goToAboutDev() {
+  void goToAboutUs() {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -281,4 +293,9 @@ class _MyHomePageState extends State<MyHomePage>
       ),
     );
   }
+}
+
+ThemeData themeData(context) {
+  final themeNotifier = Provider.of<ThemeNotifier>(context);
+  return themeNotifier.getTheme();
 }

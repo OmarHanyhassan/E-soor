@@ -1,4 +1,6 @@
+import 'package:E_Soor/models/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AppSearch extends SearchDelegate<String> {
   @override
@@ -10,7 +12,8 @@ class AppSearch extends SearchDelegate<String> {
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return ThemeData.dark();
+    final themeNotifier = Provider.of<ThemeNotifier>(context);
+    return themeNotifier.getTheme();
   }
 
   @override

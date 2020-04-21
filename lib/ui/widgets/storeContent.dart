@@ -3,11 +3,11 @@ import 'package:E_Soor/ui/widgets/categoryBar.dart';
 
 Widget StoreContent(context, onTap, onViewMore) {
   return ListView(
-    shrinkWrap: true,
     children: <Widget>[
       Container(
         height: MediaQuery.of(context).size.width * 0.125,
         child: ListView.builder(
+          shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return Padding(
@@ -23,6 +23,7 @@ Widget StoreContent(context, onTap, onViewMore) {
         ),
       ),
       ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, position) {
