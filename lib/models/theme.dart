@@ -12,3 +12,7 @@ class ThemeNotifier with ChangeNotifier {
     notifyListeners();
   }
 }
+
+abstract class SharedPreferencesKeys {
+  static const String isDarkTheme = 'isDarkTheme';
+}

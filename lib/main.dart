@@ -12,15 +12,27 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:E_Soor/models/auth.dart';
 import 'package:E_Soor/models/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //flutter build ios && tar -zcf build/app.ipa build/ios/iphoneos/Runner.app && ls -lh build/app.ipa
 
-void main() => runApp(
-      ChangeNotifierProvider<ThemeNotifier>(
-        create: (_) => ThemeNotifier(ThemeData.dark()),
-        child: MyApp(),
-      ),
-    );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var isDarkTheme = prefs.getBool(SharedPreferencesKeys.isDarkTheme);
+  ThemeData theme;
+  if (isDarkTheme != null) {
+    theme = isDarkTheme ? ThemeData.dark() : ThemeData.light();
+  } else {
+    theme = ThemeData.light();
+  }
+  runApp(
+    ChangeNotifierProvider<ThemeNotifier>(
+      create: (_) => ThemeNotifier(theme),
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -220,9 +232,7 @@ class _MyHomePageState extends State<MyHomePage>
                       },
                     ),
                     titleSpacing: 0,
-                    actions: <Widget>[
-                      ThemeSwitch()
-                    ],
+                    actions: <Widget>[ThemeSwitch()],
                     title: FlatButton(
                       onPressed: () {
                         showSearchPage(context, AppSearch(), transcription);

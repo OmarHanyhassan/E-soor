@@ -1,6 +1,7 @@
 import 'package:E_Soor/models/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeSwitch extends StatefulWidget {
   @override
@@ -8,12 +9,14 @@ class ThemeSwitch extends StatefulWidget {
 }
 
 class _ThemeSwitchState extends State<ThemeSwitch> {
-  var _darkTheme = true;
+  bool _darkTheme = false;
 
   void onThemeChanged(bool value, ThemeNotifier themeNotifier) async {
     (value)
         ? themeNotifier.setTheme(ThemeData.dark())
         : themeNotifier.setTheme(ThemeData.light());
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(SharedPreferencesKeys.isDarkTheme, value);
   }
 
   @override
@@ -21,7 +24,7 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
     _darkTheme = (themeNotifier.getTheme() == ThemeData.dark());
     return Switch(
-      activeColor: Theme.of(context).accentColor,
+      activeColor: Theme.of(context).cursorColor,
       onChanged: (value) {
         setState(() {
           _darkTheme = value;
