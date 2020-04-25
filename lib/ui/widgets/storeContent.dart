@@ -27,7 +27,7 @@ Widget StoreContent(context, onTap, onViewMore) {
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, position) {
-          return CategoryBar(context, onTap, onViewMore);
+          return CategoryBar(context, onTap, onViewMore, null);
         },
         itemCount: 20,
       ),

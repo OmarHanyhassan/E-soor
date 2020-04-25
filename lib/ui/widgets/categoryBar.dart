@@ -1,7 +1,34 @@
 import 'package:E_Soor/ui/widgets/categoryItems.dart';
 import 'package:flutter/material.dart';
 
-Widget CategoryBar(context, onTap, onViewMore) {
+String categoryName(name) {
+  if (name == null) {
+    return "Category Name";
+  } else {
+    return name;
+  }
+}
+
+Widget onViewMoreBuild(onViewMore) {
+  if (onViewMore != null) {
+    return FlatButton(
+      onPressed: onViewMore,
+      child: Text(
+        "view more".toUpperCase(),
+        style: TextStyle(
+          fontSize: 13,
+        ),
+      ),
+    );
+  } else {
+    return Container(
+      height: 0,
+      width: 0,
+    );
+  }
+}
+
+Widget CategoryBar(context, onTap, onViewMore, name) {
   return Container(
     child: Column(
       children: <Widget>[
@@ -12,26 +39,18 @@ Widget CategoryBar(context, onTap, onViewMore) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                "Category Name",
+                categoryName(name),
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              FlatButton(
-                onPressed: onViewMore,
-                child: Text(
-                  "view more".toUpperCase(),
-                  style: TextStyle(
-                    fontSize: 13,
-                  ),
-                ),
-              )
+              onViewMoreBuild(onViewMore)
             ],
           ),
         ),
         // Category Items
-        CategoryItems(context, onTap),
+        CategoryItems(context, onTap, Axis.horizontal),
         // Spacer
         Divider(
           color: Colors.white,

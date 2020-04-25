@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-Widget CategoryItem(context, onTap) {
+Widget BookItem(context, onTap) {
   return Padding(
     padding: const EdgeInsets.all(3.0),
     child: GestureDetector(
@@ -39,11 +39,13 @@ Widget CategoryItem(context, onTap) {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Padding(
-                                  padding: EdgeInsets.only(left: 2.0, top: 3.0, right: 10.0),
+                                  padding: EdgeInsets.only(
+                                      left: 2.0, top: 3.0, right: 10.0),
                                   child: Text("Book Name"),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 2.0, top: 3.0, right: 10.0),
+                                  padding: EdgeInsets.only(
+                                      left: 2.0, top: 3.0, right: 10.0),
                                   child: Text("Author Name"),
                                 ),
                               ],

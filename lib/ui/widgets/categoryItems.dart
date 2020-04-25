@@ -1,13 +1,13 @@
-import 'package:E_Soor/ui/widgets/categoryItem.dart';
+import 'package:E_Soor/ui/widgets/bookItem.dart';
 import 'package:flutter/material.dart';
 
-Widget CategoryItems(context, onTap) {
+Widget CategoryItems(context, onTap, scrollDirection) {
   return Container(
     height: MediaQuery.of(context).size.height * 0.3,
     child: ListView.builder(
-      scrollDirection: Axis.horizontal,
+      scrollDirection: scrollDirection,
       itemBuilder: (context, index) {
-        return CategoryItem(context, onTap);
+        return BookItem(context, onTap);
       },
       itemCount: 20,
     ),
