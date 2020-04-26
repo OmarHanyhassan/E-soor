@@ -1,4 +1,3 @@
-import 'package:E_Soor/ui/widgets/categoryBar.dart';
 import 'package:flutter/material.dart';
 
 Widget StoreContent(context, onTap, onViewMore, List<Widget> children) {
