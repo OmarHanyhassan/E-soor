@@ -1,7 +1,26 @@
-import 'package:flutter/material.dart';
 import 'package:E_Soor/ui/widgets/categoryBar.dart';
+import 'package:flutter/material.dart';
 
-Widget StoreContent(context, onTap, onViewMore) {
+Widget StoreContent(context, onTap, onViewMore, List<Widget> children) {
+  Widget buildContent() {
+    if (children.length == 0) {
+      return Center(
+        child: Container(
+          child: Text("There is no items"),
+        ),
+      );
+    } else {
+      return ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return children[index];
+        },
+        itemCount: children.length,
+      );
+    }
+  }
+
   return ListView(
     children: <Widget>[
       Container(
@@ -22,15 +41,15 @@ Widget StoreContent(context, onTap, onViewMore) {
           itemCount: 8,
         ),
       ),
-      ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context, position) {
-          return CategoryBar(context, onTap, onViewMore, null);
-        },
-        itemCount: 20,
-      ),
+      buildContent(),
+      // ListView.builder(
+      //   shrinkWrap: true,
+      //   physics: NeverScrollableScrollPhysics(),
+      //   itemBuilder: (context, index) {
+      //     return CategoryBar(context, onTap, onViewMore, null);
+      //   },
+      //   itemCount: 5,
+      // )
     ],
   );
 }
