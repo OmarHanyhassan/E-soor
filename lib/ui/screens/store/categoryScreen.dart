@@ -1,15 +1,15 @@
 import 'package:E_Soor/ui/screens/store/book_page.dart';
-import 'package:E_Soor/ui/screens/store/subCategory.dart';
+import 'package:E_Soor/ui/screens/store/subCategoryScreen.dart';
 import 'package:E_Soor/ui/widgets/AppSearch.dart';
 import 'package:E_Soor/ui/widgets/categoryBar.dart';
 import 'package:flutter/material.dart';
 
-class Category extends StatefulWidget {
+class CategoryScreen extends StatefulWidget {
   @override
-  _CategoryState createState() => _CategoryState();
+  _CategoryScreenState createState() => _CategoryScreenState();
 }
 
-class _CategoryState extends State<Category> {
+class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,8 @@ class _CategoryState extends State<Category> {
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
-          return CategoryBar(context, openBookPage, openSubCategoryPage, null);
+          return CategoryBar(
+              context, openBookPage, openSubCategoryPage, "SubCategory");
         },
         itemCount: 10,
       ),

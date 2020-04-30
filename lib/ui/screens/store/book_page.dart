@@ -9,7 +9,6 @@ class BookPage extends StatefulWidget {
 
 class _BookState extends State<BookPage> {
   int price = 60;
-  ScrollController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,9 @@ class _BookState extends State<BookPage> {
         ],
       ),
       body: RefreshIndicator(
-        onRefresh: _onRefresh,
+        onRefresh: () {
+          return;
+        },
         child: Flex(
           direction: Axis.vertical,
           children: <Widget>[
@@ -158,6 +159,4 @@ class _BookState extends State<BookPage> {
       ),
     );
   }
-
-  Future<void> _onRefresh() {}
 }

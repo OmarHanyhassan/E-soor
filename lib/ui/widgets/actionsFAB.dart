@@ -1,12 +1,11 @@
-import 'package:E_Soor/ui/widgets/categoryBar.dart';
+import 'package:E_Soor/models/category_model.dart';
+import 'package:E_Soor/ui/screens/editCategoriesScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:E_Soor/main.dart';
 
 class ActionsFAB extends StatefulWidget {
-  final List<Widget> list;
-  final void Function() onTap;
-  final void Function() onViewMore;
-  ActionsFAB(this.list, this.onTap, this.onViewMore);
-
+  final selectedCategory;
+  ActionsFAB({this.selectedCategory});
   @override
   _ActionsFABState createState() => _ActionsFABState();
 }
@@ -14,18 +13,23 @@ class ActionsFAB extends StatefulWidget {
 class _ActionsFABState extends State<ActionsFAB> {
   @override
   Widget build(BuildContext context) {
-    return actionsFabBuild(
-        widget.list, context, widget.onTap, widget.onViewMore);
+    return actionsFabBuild();
   }
 
-  Widget actionsFabBuild(List list, context, onTap, onViewMore) {
+  Widget actionsFabBuild() {
+    Category category = widget.selectedCategory;
     return FloatingActionButton(
-      child: Icon(Icons.add),
+      backgroundColor: themeData(context).accentColor,
+      child: Icon(Icons.more_vert),
       onPressed: () {
-        setState(() {
-          list.add(CategoryBar(context, onTap, onViewMore, null));
-          print(list.length);
-        });
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EditCategoriesScreen(
+              category: category,
+            ),
+          ),
+        );
       },
     );
   }

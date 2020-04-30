@@ -1,8 +1,11 @@
+import 'package:E_Soor/models/category_model.dart';
+import 'package:E_Soor/ui/screens/editCategoriesScreen.dart';
+import 'package:E_Soor/ui/widgets/categoryBar.dart';
 import 'package:flutter/material.dart';
 
-Widget StoreContent(context, onTap, onViewMore, List<Widget> children) {
+Widget storeContent(context, onTap, onViewMore, List<Category> categories) {
   Widget buildContent() {
-    if (children.length == 0) {
+    if (categories.length == 0) {
       return Center(
         child: Container(
           child: Text("There is no items"),
@@ -13,9 +16,27 @@ Widget StoreContent(context, onTap, onViewMore, List<Widget> children) {
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          return children[index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: CategoryBar(
+              context,
+              onTap,
+              onViewMore,
+              categories[index].name,
+              onDoubleTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EditCategoriesScreen(
+                      category: categories[index],
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
         },
-        itemCount: children.length,
+        itemCount: categories.length,
       );
     }
   }
@@ -41,14 +62,6 @@ Widget StoreContent(context, onTap, onViewMore, List<Widget> children) {
         ),
       ),
       buildContent(),
-      // ListView.builder(
-      //   shrinkWrap: true,
-      //   physics: NeverScrollableScrollPhysics(),
-      //   itemBuilder: (context, index) {
-      //     return CategoryBar(context, onTap, onViewMore, null);
-      //   },
-      //   itemCount: 5,
-      // )
     ],
   );
 }

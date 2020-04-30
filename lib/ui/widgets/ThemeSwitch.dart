@@ -1,3 +1,4 @@
+import 'package:E_Soor/helpers/logic/constants.dart';
 import 'package:E_Soor/models/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,8 +14,8 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
 
   void onThemeChanged(bool value, ThemeNotifier themeNotifier) async {
     (value)
-        ? themeNotifier.setTheme(ThemeData.dark())
-        : themeNotifier.setTheme(ThemeData.light());
+        ? themeNotifier.setTheme(Constants.kDarkTheme)
+        : themeNotifier.setTheme(Constants.kLightTheme);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool(SharedPreferencesKeys.isDarkTheme, value);
   }
@@ -22,7 +23,7 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
   @override
   Widget build(BuildContext context) {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
-    _darkTheme = (themeNotifier.getTheme() == ThemeData.dark());
+    _darkTheme = (themeNotifier.getTheme() == Constants.kDarkTheme);
     return Switch(
       activeColor: Theme.of(context).cursorColor,
       onChanged: (value) {

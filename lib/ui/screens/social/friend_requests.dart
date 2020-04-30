@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 
-
 class FriendRequests extends StatefulWidget {
-	@override
-	_FriendRequestsState createState() => _FriendRequestsState();
+  @override
+  _FriendRequestsState createState() => _FriendRequestsState();
 }
 
 class _FriendRequestsState extends State<FriendRequests> {
-	
-	int friendsNum = 20;
-	
-	@override
-	Widget build(BuildContext context) {
-		Size size = MediaQuery.of(context).size;
-		return Container(
+  int friendsNum = 20;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.fill,
@@ -31,7 +28,8 @@ class _FriendRequestsState extends State<FriendRequests> {
                 leading: SizedBox(
                   child: CircleAvatar(
                     maxRadius: 30,
-                    backgroundImage: ExactAssetImage("allAssets/images/mmm.jpg"),
+                    backgroundImage:
+                        ExactAssetImage("allAssets/images/mmm.jpg"),
                   ),
                 ),
                 title: Row(
@@ -41,14 +39,12 @@ class _FriendRequestsState extends State<FriendRequests> {
                     Text("Acc Name"),
                     Text(
                       "Verification",
-                      style: TextStyle(
-                        color: Colors.red
-                      ),
+                      style: TextStyle(color: Colors.red),
                     ),
                   ],
                 ),
                 subtitle: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                  padding: EdgeInsets.only(top: 15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -66,7 +62,9 @@ class _FriendRequestsState extends State<FriendRequests> {
                             color: Colors.green,
                             child: Row(
                               children: <Widget>[
-                                Icon(Icons.done,),
+                                Icon(
+                                  Icons.done,
+                                ),
                                 Text("Accept"),
                               ],
                             ),
@@ -76,7 +74,9 @@ class _FriendRequestsState extends State<FriendRequests> {
                             color: Colors.red,
                             child: Row(
                               children: <Widget>[
-                                Icon(Icons.close,),
+                                Icon(
+                                  Icons.close,
+                                ),
                                 Text("Decline"),
                               ],
                             ),
@@ -91,11 +91,13 @@ class _FriendRequestsState extends State<FriendRequests> {
             );
           },
           separatorBuilder: (context, position) {
-            return SizedBox(height: 20,);
+            return SizedBox(
+              height: 20,
+            );
           },
           itemCount: 21,
         ),
       ),
     );
-	}
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-Widget BookItem(context, onTap) {
+Widget bookItem(context, onTap) {
   return Padding(
     padding: const EdgeInsets.all(3.0),
     child: GestureDetector(

@@ -60,7 +60,12 @@ class _SubCategoryState extends State<SubCategory> {
       ),
       body: ListView.builder(
         itemBuilder: (context, position) {
-          return CategoryBar(context, openBookPage, null, chars[position]);
+          return CategoryBar(
+            context,
+            openBookPage,
+            null,
+            chars[position],
+          );
         },
         itemCount: chars.length,
       ),
